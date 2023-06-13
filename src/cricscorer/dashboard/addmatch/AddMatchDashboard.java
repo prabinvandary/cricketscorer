@@ -5,7 +5,7 @@ import cricscorer.Model.MatchSummary;
 import cricscorer.Model.TeamMatchScore;
 import cricscorer.enumvalues.MatchBowlAction;
 import cricscorer.enumvalues.TossAction;
-import cricscorer.repository.generic.GenericRepository;
+import cricscorer.repository.generic.genericrepository.GenericRepository;
 import cricscorer.repository.teammatchscore.TeamMatchScoreRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +15,8 @@ import java.util.Scanner;
 
 public class AddMatchDashboard<T> {
 
-    GenericRepository<T> genericRepository;
-
     public AddMatchDashboard() {
-        this.genericRepository = new GenericRepository<T>();
+        this.teamMatchScoreRepository = null;
     }
 
     List<Match> matchList = new ArrayList<>();
@@ -38,6 +36,12 @@ public class AddMatchDashboard<T> {
     Integer firstTeamId, secondTeamId, tossWonTeamId;
 
     TossAction tossAction;
+
+    private final TeamMatchScoreRepository teamMatchScoreRepository;
+
+    public AddMatchDashboard(TeamMatchScoreRepository teamMatchScoreRepository) {
+        this.teamMatchScoreRepository = teamMatchScoreRepository;
+    }
 
     public void returnAddMatchDashboard() {
         System.out.println("Welcome to the add match dashboard.");
@@ -70,11 +74,12 @@ public class AddMatchDashboard<T> {
 //        tossAction = TossAction.valueOf((sc.nextInt() == 1 ? "WON_AND_BAT_FIRST" : "WON_AND_BOWL_FIRST"));
         saveTeamMatchScore(new TeamMatchScore(1, firstTeamId, null, matchId,
                 null, Objects.equals(firstTeamId, tossWonTeamId) ? tossAction : null));
-        Integer id = genericRepository.saveData((T) new TeamMatchScore(1, firstTeamId, null, matchId,
-                null, Objects.equals(firstTeamId, tossWonTeamId) ? tossAction : null));
-
         saveTeamMatchScore(new TeamMatchScore(2, secondTeamId, null, matchId,
                 null, Objects.equals(secondTeamId, tossWonTeamId) ? tossAction : null));
+        teamMatchScoreRepository.saveData(new TeamMatchScore(2, secondTeamId, null, matchId,
+                null, Objects.equals(secondTeamId, tossWonTeamId) ? tossAction : null));
+
+        returnTeamMatchScore();
         Integer firstBattingTeamId = null;
         Integer secondBattingTeamId = null;
 
@@ -269,4 +274,11 @@ public class AddMatchDashboard<T> {
         Integer random = randomValue.nextInt(2) + 1;
         return random;
     }
+
+    String returnTeamMatchScore() {
+        System.out.println(teamMatchScoreRepository.getData(0).getId() + " "
+                + teamMatchScoreRepository.getData(0).getIsWinner());
+        return null;
+    }
+
 }

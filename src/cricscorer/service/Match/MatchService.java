@@ -12,9 +12,13 @@ import java.util.List;
  * @author prabin
  */
 public interface MatchService {
-     Integer saveMatch(Match match);
-    
-     List<Match> getAllMatchDetails();
-     
-     Match getMatchDetailById(Integer id);
+
+    Integer saveMatch(Match match);
+
+    List<Match> getAllMatchDetails();
+
+    Match getMatchDetailById(Integer id);
+
+    Boolean saveMatchDetails(Match match);
+
 }
