@@ -5,13 +5,21 @@ import cricscorer.Model.MatchSummary;
 import cricscorer.Model.TeamMatchScore;
 import cricscorer.enumvalues.MatchBowlAction;
 import cricscorer.enumvalues.TossAction;
+import cricscorer.repository.generic.GenericRepository;
+import cricscorer.repository.teammatchscore.TeamMatchScoreRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
-public class AddMatchDashboard {
+public class AddMatchDashboard<T> {
+
+    GenericRepository<T> genericRepository;
+
+    public AddMatchDashboard() {
+        this.genericRepository = new GenericRepository<T>();
+    }
 
     List<Match> matchList = new ArrayList<>();
 
@@ -28,6 +36,7 @@ public class AddMatchDashboard {
     Integer secondBattingTeamRun = 0;
 
     Integer firstTeamId, secondTeamId, tossWonTeamId;
+
     TossAction tossAction;
 
     public void returnAddMatchDashboard() {
@@ -56,11 +65,14 @@ public class AddMatchDashboard {
         tossAction = TossAction.valueOf((tossActionRandom == 1 ? "WON_AND_BAT_FIRST" : "WON_AND_BOWL_FIRST"));
 
         System.out.println("Team " + tossWonTeamId + " won the toss and choose " + tossAction.toString());
-        System.out.println("What action did the toss won team choosen?");
-        System.out.println("Enter 1. for:WON_AND_BAT_FIRST\n 2. for:WON_AND_BOWL_FIRST");
-        tossAction = TossAction.valueOf((sc.nextInt() == 1 ? "WON_AND_BAT_FIRST" : "WON_AND_BOWL_FIRST"));
+//        System.out.println("What action did the toss won team choosen?");
+//        System.out.println("Enter 1. for:WON_AND_BAT_FIRST\n 2. for:WON_AND_BOWL_FIRST");
+//        tossAction = TossAction.valueOf((sc.nextInt() == 1 ? "WON_AND_BAT_FIRST" : "WON_AND_BOWL_FIRST"));
         saveTeamMatchScore(new TeamMatchScore(1, firstTeamId, null, matchId,
                 null, Objects.equals(firstTeamId, tossWonTeamId) ? tossAction : null));
+        Integer id = genericRepository.saveData((T) new TeamMatchScore(1, firstTeamId, null, matchId,
+                null, Objects.equals(firstTeamId, tossWonTeamId) ? tossAction : null));
+
         saveTeamMatchScore(new TeamMatchScore(2, secondTeamId, null, matchId,
                 null, Objects.equals(secondTeamId, tossWonTeamId) ? tossAction : null));
         Integer firstBattingTeamId = null;
@@ -84,7 +96,6 @@ public class AddMatchDashboard {
                 && Objects.equals(tossAction, TossAction.WON_AND_BOWL_FIRST)) {
             firstBattingTeamId = firstTeamId;
             secondBattingTeamId = secondTeamId;
-
         }
 
         addMatchSummaryDashboard(matchId);
