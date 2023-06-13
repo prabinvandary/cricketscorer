@@ -11,10 +11,11 @@ import cricscorer.Model.Player;
  * @author prabin
  */
 public interface PlayerService {
+
     Boolean savePlayer(Player player);
-    
+
     Player getAllPlayerDetais();
-    
+
     Player getPlayerById(Integer id);
-    
+
 }

@@ -10,7 +10,7 @@ import cricscorer.Model.Tournament;
  *
  * @author prabin
  */
-public class TournamentServiceImpl implements TournamentService{
+public class TournamentServiceImpl implements TournamentService {
 
     @Override
     public Boolean saveTournament(Tournament tournament) {
@@ -20,11 +20,11 @@ public class TournamentServiceImpl implements TournamentService{
     @Override
     public Tournament getAllTournament() {
         return null;
-        }
+    }
 
     @Override
     public Tournament getTournamentById(Integer id) {
         return null;
     }
-    
+
 }

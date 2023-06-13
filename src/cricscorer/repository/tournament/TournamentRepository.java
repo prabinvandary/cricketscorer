@@ -11,6 +11,6 @@ import cricscorer.repository.generic.genericrepository.GenericRepository;
  *
  * @author prabin
  */
-public class TournamentRepository extends GenericRepository<Tournament, Integer>{
-    
+public class TournamentRepository extends GenericRepository<Tournament, Integer> {
+
 }

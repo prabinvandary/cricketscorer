@@ -20,8 +20,8 @@ public class TeamServiceImpl implements TeamService {
 
         try {
             MySqlConnection connection = new MySqlConnection();
-            Connection con=connection.returnConnection();            
-            PreparedStatement stmt=con.prepareStatement("insert in to team(name,address,manager) values (?,?,?)");
+            Connection con = connection.returnConnection();
+            PreparedStatement stmt = con.prepareStatement("insert in to team(name,address,manager) values (?,?,?)");
             stmt.setString(1, team.getName());
             stmt.setString(2, team.getAddress());
             stmt.setString(3, team.getManager());

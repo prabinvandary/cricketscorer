@@ -12,7 +12,10 @@ import java.util.List;
  * @author prabin
  */
 public interface TeamTournamentService {
+
     Boolean saveTeamTournament(TeamTournament teamTournament);
+
     List<TeamTournament> getAllTeamTournament();
+
     TeamTournament getTeamTournamentById(Integer id);
 }

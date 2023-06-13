@@ -6,7 +6,7 @@ import java.util.Date;
 public class Match {
 
     private Integer id;
-    private String  matchDate;
+    private String matchDate;
     private String venue;
 
     public Match(Integer id, String matchDate, String venue) {
@@ -34,8 +34,6 @@ public class Match {
     public void setMatchDate(String matchDate) {
         this.matchDate = matchDate;
     }
-
-
 
     public void setVenue(String venue) {
         this.venue = venue;

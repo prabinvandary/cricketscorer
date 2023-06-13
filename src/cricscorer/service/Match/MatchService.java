@@ -5,6 +5,7 @@
 package cricscorer.service.Match;
 
 import cricscorer.Model.Match;
+import cricscorer.repository.match.MatchRepository;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public interface MatchService {
 
-    Integer saveMatch(Match match);
+    Integer saveMatch(MatchRepository matchRepository, Match match);
 
     List<Match> getAllMatchDetails();
 

@@ -11,6 +11,7 @@ import cricscorer.enumvalues.TossAction;
  * @author prabin
  */
 public class TeamMatchScore {
+
     private Integer id;
     private Integer teamId;
     private Integer score;
@@ -74,5 +75,5 @@ public class TeamMatchScore {
     public void setTossAction(TossAction tossAction) {
         this.tossAction = tossAction;
     }
-    
+
 }

@@ -6,6 +6,7 @@ import cricscorer.service.matchsummary.MatchSummaryService;
 import java.util.Scanner;
 
 public class AddMatchSummaryDashboard {
+
     Scanner sc = new Scanner(System.in);
     private final MatchSummaryService matchSummaryService;
     Integer teamScore = 0;
@@ -36,8 +37,6 @@ public class AddMatchSummaryDashboard {
     public AddMatchSummaryDashboard() {
         this.matchSummaryService = null;
     }
-    
-
 
     public void addMatchSummaryDashboard(Integer matchId) {
         System.out.println("Let's start the match and enter the each balls details:\n Are you ready??");

@@ -13,7 +13,8 @@ import java.util.List;
  * @author prabin
  */
 public class MatchSummaryServiceImpl implements MatchSummaryService {
-    List<MatchSummary> matchSummaryList=new ArrayList<>();
+
+    List<MatchSummary> matchSummaryList = new ArrayList<>();
 
     public List<MatchSummary> getMatchSummaryList() {
         return matchSummaryList;
@@ -22,8 +23,6 @@ public class MatchSummaryServiceImpl implements MatchSummaryService {
     public void setMatchSummaryList(List<MatchSummary> matchSummaryList) {
         this.matchSummaryList = matchSummaryList;
     }
-    
-    
 
     @Override
     public Boolean saveMatchSummary(MatchSummary matchSummary) {

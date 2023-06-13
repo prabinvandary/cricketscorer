@@ -4,10 +4,13 @@
  */
 package cricscorer.repository.team;
 
+import cricscorer.Model.Team;
+import cricscorer.repository.generic.genericrepository.GenericRepository;
+
 /**
  *
  * @author prabin
  */
-public class TeamRepository {
-    
+public class TeamRepository extends GenericRepository<Team, Integer> {
+
 }

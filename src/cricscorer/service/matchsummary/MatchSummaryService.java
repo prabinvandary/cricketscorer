@@ -12,7 +12,10 @@ import java.util.List;
  * @author prabin
  */
 public interface MatchSummaryService {
+
     Boolean saveMatchSummary(MatchSummary matchSummary);
+
     List<MatchSummary> getAllMatchSummary();
+
     MatchSummary matchSummaryById(Integer id);
 }

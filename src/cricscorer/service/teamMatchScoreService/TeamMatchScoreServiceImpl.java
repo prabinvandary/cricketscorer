@@ -5,6 +5,7 @@
 package cricscorer.service.teamMatchScoreService;
 
 import cricscorer.Model.TeamMatchScore;
+import cricscorer.repository.teammatchscore.TeamMatchScoreRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,8 +19,8 @@ public class TeamMatchScoreServiceImpl implements TeamMatchScoreService {
     List<TeamMatchScore> teamMatch = new ArrayList<>();
 
     @Override
-    public Boolean saveTeamMatchScore(TeamMatchScore teamMatchScore) {
-        teamMatch.add(teamMatchScore);
+    public Boolean saveTeamMatchScore(TeamMatchScoreRepository matchSummaryRepository, TeamMatchScore teamMatchScore) {
+        matchSummaryRepository.saveData(teamMatchScore);
         return true;
     }
 

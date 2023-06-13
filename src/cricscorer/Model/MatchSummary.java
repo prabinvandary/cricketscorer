@@ -81,6 +81,7 @@ public class MatchSummary {
     public void setOver(Double over) {
         this.over = over;
     }
+
     public void setRun(Integer run) {
         this.run = run;
     }

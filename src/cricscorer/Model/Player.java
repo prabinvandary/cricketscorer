@@ -11,16 +11,17 @@ import cricscorer.enumvalues.PlayerRole;
  * @author prabin
  */
 public class Player {
+
     private Integer id;
     private String name;
     private PlayerRole role;
     private String address;
 
-    public Player(Integer id, String name, PlayerRole role,String address) {
+    public Player(Integer id, String name, PlayerRole role, String address) {
         this.id = id;
         this.name = name;
         this.role = role;
-        this.address=address;
+        this.address = address;
     }
 
     public Integer getId() {
@@ -42,7 +43,6 @@ public class Player {
     public String getAddress() {
         return address;
     }
-    
 
     public void setName(String name) {
         this.name = name;

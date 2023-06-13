@@ -9,5 +9,5 @@ package cricscorer.enumvalues;
  * @author prabin
  */
 public enum TossAction {
-    WON_AND_BAT_FIRST,WON_AND_BOWL_FIRST,LOSE;
+    WON_AND_BAT_FIRST, WON_AND_BOWL_FIRST, LOSE;
 }

@@ -4,10 +4,13 @@
  */
 package cricscorer.repository.player;
 
+import cricscorer.Model.Player;
+import cricscorer.repository.generic.genericrepository.GenericRepository;
+
 /**
  *
  * @author prabin
  */
-public class PlayerRepository {
-    
+public class PlayerRepository extends GenericRepository<Player, Integer> {
+
 }

@@ -5,6 +5,7 @@
 package cricscorer.service.teamMatchScoreService;
 
 import cricscorer.Model.TeamMatchScore;
+import cricscorer.repository.teammatchscore.TeamMatchScoreRepository;
 import java.util.List;
 
 /**
@@ -12,9 +13,10 @@ import java.util.List;
  * @author prabin
  */
 public interface TeamMatchScoreService {
-    Boolean saveTeamMatchScore(TeamMatchScore teamMatchScore);
-    
+
+    Boolean saveTeamMatchScore(TeamMatchScoreRepository matchSummaryRepository, TeamMatchScore teamMatchScore);
+
     List<TeamMatchScore> getAllTeamMatchScore();
-    
+
     TeamMatchScore getTeamMatchScoreById(Integer id);
 }
