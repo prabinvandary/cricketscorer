@@ -19,14 +19,13 @@ import java.util.UUID;
  */
 public abstract class GenericRepository<T, ID> implements GenericRepositoryInterface<T, ID> {
 
-    List<T> globalList;
+    List<T> globalList=new ArrayList<>();
 
     public GenericRepository() {
     }
 
     @Override
     public T saveData(T t) {
-        globalList = new ArrayList<>();
         globalList.add(t);
         return t;
     }
@@ -34,6 +33,10 @@ public abstract class GenericRepository<T, ID> implements GenericRepositoryInter
     @Override
     public T getData(Integer id) {
         return globalList.get(id);
+    }
+    
+    public List<T> getAllData(){
+    return globalList;
     }
 
 }

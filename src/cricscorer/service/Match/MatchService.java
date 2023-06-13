@@ -19,7 +19,4 @@ public interface MatchService {
     List<Match> getAllMatchDetails();
 
     Match getMatchDetailById(Integer id);
-
-    Boolean saveMatchDetails(Match match);
-
 }
