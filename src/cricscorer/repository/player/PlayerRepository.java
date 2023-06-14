@@ -106,7 +106,7 @@ public class PlayerRepository extends GenericRepository<Player, Integer> {
     }
 
     public Boolean deleteById(DashboardController dashboardController, Integer id) {
-        String deleteQuery = "delete * from player p where p.id=?";
+        String deleteQuery = "delete  from player  where id=?";
         try {
             Connection connection = dashboardController.getMySqlConnection().returnConnection();
             PreparedStatement preparedStatement;
@@ -114,6 +114,28 @@ public class PlayerRepository extends GenericRepository<Player, Integer> {
                 preparedStatement = connection.prepareStatement(deleteQuery);
                 preparedStatement.setInt(1, id);
                 preparedStatement.execute();
+            } catch (SQLException ex) {
+                Logger.getLogger(PlayerRepository.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (ClassNotFoundException e) {
+            System.out.println(e);
+        }
+
+        return true;
+    }
+
+    public Boolean updatePlayer(DashboardController dashboardController, Player player) {
+
+        String updateQuery = "update player p  SET p.name=?,p.address=?,p.player_role=? where p.id=?";
+        try {
+            Connection connection = dashboardController.getMySqlConnection().returnConnection();
+            PreparedStatement preparedStatement;
+            try {
+                preparedStatement = connection.prepareStatement(updateQuery);
+                preparedStatement.setString(1, player.getName());
+                preparedStatement.setString(2, player.getRole().toString());
+                preparedStatement.setString(3, player.getAddress());
+                preparedStatement.executeUpdate(updateQuery);
             } catch (SQLException ex) {
                 Logger.getLogger(PlayerRepository.class.getName()).log(Level.SEVERE, null, ex);
             }

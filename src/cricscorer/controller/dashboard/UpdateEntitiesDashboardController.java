@@ -1,13 +1,23 @@
 package cricscorer.controller.dashboard;
 
+import cricscorer.controller.PlayerController;
+
 /**
  *
  * @author prabin
  */
 public class UpdateEntitiesDashboardController {
 
-    void returnUpdateEntitesDashboard(DashboardController dashboardController) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    PlayerController playerController = new PlayerController();
+
+   public void returnUpdateEntitesDashboard(DashboardController dashboardController) {
+        System.out.println("Welcome to delete dashboard:");
+        deletePlayerById(dashboardController);
+    }
+
+    
+    public Boolean deletePlayerById(DashboardController dashboardController) {
+        return playerController.deletePlayerById(dashboardController);
     }
 
 }
