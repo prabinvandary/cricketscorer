@@ -16,8 +16,8 @@ public class MatchSummary {
     private Integer run;
     private Double over;
     private MatchBowlAction action;
-    private Integer batsMenId;
-    private Integer bowlerId;
+    public Integer batsMenId;
+    public Integer bowlerId;
     private Integer matchId;
 
     public MatchSummary(Integer id, Integer run, Double over, MatchBowlAction action, Integer batsMenId, Integer bowlerId, Integer matchId) {

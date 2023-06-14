@@ -14,6 +14,7 @@ import java.util.List;
  * @author prabin
  */
 public class MatchSummaryServiceImpl implements MatchSummaryService {
+
     @Override
     public Boolean saveMatchSummary(MatchSummaryRepository matchSummaryRepository, MatchSummary matchSummary) {
         matchSummaryRepository.saveData(matchSummary);
@@ -21,8 +22,8 @@ public class MatchSummaryServiceImpl implements MatchSummaryService {
     }
 
     @Override
-    public List<MatchSummary> getAllMatchSummary() {
-        return null;
+    public List<MatchSummary> getAllMatchSummary(MatchSummaryRepository matchSummaryRepository) {
+        return matchSummaryRepository.getAllData();
     }
 
     @Override
@@ -30,4 +31,25 @@ public class MatchSummaryServiceImpl implements MatchSummaryService {
         return null;
     }
 
+    /**
+     *
+     * @param matchSummaryRepository
+     * @param id
+     * @return
+     * @throws NoSuchFieldException
+     */
+    @Override
+    public List<MatchSummary> getAllMatchSummaryByBatsmenId(MatchSummaryRepository matchSummaryRepository, Integer id) throws NoSuchFieldException {
+        return matchSummaryRepository.returnMatchSummaryByBatsmenId(matchSummaryRepository, id);
+    }
+
+    @Override
+    public List<MatchSummary> getAllMatchSummaryByBowlerId(MatchSummaryRepository matchSummaryRepository, Integer id) throws NoSuchFieldException {
+        return matchSummaryRepository.returnMatchSummaryByBowlerId(matchSummaryRepository, id);
+    }
+
+    @Override
+    public List<MatchSummary> getAllMatchSummaryById(MatchSummaryRepository matchSummaryRepository, Integer id) {
+        return matchSummaryRepository.getById(id);
+    }
 }

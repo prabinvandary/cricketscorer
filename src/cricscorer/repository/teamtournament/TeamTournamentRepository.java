@@ -13,4 +13,9 @@ import cricscorer.repository.generic.genericrepository.GenericRepository;
  */
 public class TeamTournamentRepository extends GenericRepository<TeamTournament, Integer> {
 
+    @Override
+    public Integer getId(TeamTournament item) {
+        return item.getId();
+    }
+
 }

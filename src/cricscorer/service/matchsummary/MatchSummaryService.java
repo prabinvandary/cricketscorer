@@ -16,7 +16,13 @@ public interface MatchSummaryService {
 
     Boolean saveMatchSummary(MatchSummaryRepository matchSummaryRepository, MatchSummary matchSummary);
 
-    List<MatchSummary> getAllMatchSummary();
+    List<MatchSummary> getAllMatchSummary(MatchSummaryRepository matchSummaryRepository);
 
     MatchSummary matchSummaryById(Integer id);
+
+    List<MatchSummary> getAllMatchSummaryByBatsmenId(MatchSummaryRepository matchSummaryRepository, Integer id) throws NoSuchFieldException;
+
+    List<MatchSummary> getAllMatchSummaryByBowlerId(MatchSummaryRepository matchSummaryRepository, Integer id) throws NoSuchFieldException;
+    
+    List<MatchSummary> getAllMatchSummaryById(MatchSummaryRepository matchSummaryRepository, Integer id);
 }

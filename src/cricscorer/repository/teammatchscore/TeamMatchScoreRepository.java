@@ -15,4 +15,9 @@ import java.util.List;
  */
 public class TeamMatchScoreRepository extends GenericRepository<TeamMatchScore, Integer> {
 
+    @Override
+    public Integer getId(TeamMatchScore item) {
+        return item.getId();
+    }
+
 }
