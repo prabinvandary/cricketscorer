@@ -22,18 +22,22 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public List<Player> getAllPlayerDetais(DashboardController dashboardController) {
-       return dashboardController.getPlayerRepository().getAllPlayer(dashboardController);
+        return dashboardController.getPlayerRepository().getAllPlayer(dashboardController);
     }
 
     @Override
     public Player getPlayerById(DashboardController dashboardController, Integer id) {
         return dashboardController.getPlayerRepository().getPlayerById(dashboardController, id);
     }
-    
-    
+
     @Override
     public Boolean deletePlayerById(DashboardController dashboardController, Integer id) {
         return dashboardController.getPlayerRepository().deleteById(dashboardController, id);
+    }
+
+    @Override
+    public Boolean updatePlayerById(DashboardController dashboardController, Player player) {
+        return dashboardController.getPlayerRepository().updatePlayer(dashboardController, player);
     }
 
 }
