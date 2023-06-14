@@ -126,23 +126,21 @@ public class PlayerController {
     }
 
     public Boolean updatePlayerById(DashboardController dashboardController) {
-        System.out.println("Enter player id:");
-        Integer id = sc.nextInt();
         Player player = getPlayerById(dashboardController);
         System.out.println("Enter new details:");
         System.out.println("Name:");
-        String name = sc.nextLine();
+        String playerName = sc.next();
         System.out.println("Enter respective number for player role:\n 1. BATSMEN\t 2. BOWLER\t 3.ALL ROUNDER");
-        Integer role = sc.nextInt();
-        PlayerRole playerRole = (role == 1) ? PlayerRole.BATSMEN : (role == 2)
-                ? PlayerRole.BOWLER : (role == 3) ? PlayerRole.ALL_ROUNDER : null;
+        Integer roleInteger = sc.nextInt();
+        PlayerRole playerRole = (roleInteger == 1) ? PlayerRole.BATSMEN : (roleInteger == 2)
+                ? PlayerRole.BOWLER : (roleInteger == 3) ? PlayerRole.ALL_ROUNDER : null;
         System.out.println("Address");
-        String address = sc.nextLine();
+        String addressString = sc.next();
         player.setId(player.getId());
-        player.setName((name == null || name.isBlank() || name.isEmpty()) ? player.getName() : name);
-        player.setAddress((address == null || address.isEmpty() || address.isBlank() ? player.getAddress() : address));
-        player.setRole(role == null? player.getRole() : playerRole);
-        return playerService.deletePlayerById(dashboardController, id);
+        player.setName((playerName == null || playerName.isBlank() || playerName.isEmpty()) ? player.getName() : playerName);
+        player.setAddress((addressString == null || addressString.isEmpty() || addressString.isBlank() ? player.getAddress() : addressString));
+        player.setRole(roleInteger == null? player.getRole() : playerRole);
+        return playerService.updatePlayerById(dashboardController, player);
     }
 
     private void returnTableHeading() {

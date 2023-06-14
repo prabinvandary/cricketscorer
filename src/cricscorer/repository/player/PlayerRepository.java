@@ -126,7 +126,7 @@ public class PlayerRepository extends GenericRepository<Player, Integer> {
 
     public Boolean updatePlayer(DashboardController dashboardController, Player player) {
 
-        String updateQuery = "update player p  SET p.name=?,p.address=?,p.player_role=? where p.id=?";
+        String updateQuery = "update player  set name=?, player_role=?, address=? where id=?";
         try {
             Connection connection = dashboardController.getMySqlConnection().returnConnection();
             PreparedStatement preparedStatement;
@@ -135,7 +135,9 @@ public class PlayerRepository extends GenericRepository<Player, Integer> {
                 preparedStatement.setString(1, player.getName());
                 preparedStatement.setString(2, player.getRole().toString());
                 preparedStatement.setString(3, player.getAddress());
-                preparedStatement.executeUpdate(updateQuery);
+                preparedStatement.setInt(4, player.getId());
+
+               Integer update= preparedStatement.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(PlayerRepository.class.getName()).log(Level.SEVERE, null, ex);
             }
