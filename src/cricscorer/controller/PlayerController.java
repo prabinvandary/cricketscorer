@@ -125,6 +125,26 @@ public class PlayerController {
         return playerService.deletePlayerById(dashboardController, id);
     }
 
+    public Boolean updatePlayerById(DashboardController dashboardController) {
+        System.out.println("Enter player id:");
+        Integer id = sc.nextInt();
+        Player player = getPlayerById(dashboardController);
+        System.out.println("Enter new details:");
+        System.out.println("Name:");
+        String name = sc.nextLine();
+        System.out.println("Enter respective number for player role:\n 1. BATSMEN\t 2. BOWLER\t 3.ALL ROUNDER");
+        Integer role = sc.nextInt();
+        PlayerRole playerRole = (role == 1) ? PlayerRole.BATSMEN : (role == 2)
+                ? PlayerRole.BOWLER : (role == 3) ? PlayerRole.ALL_ROUNDER : null;
+        System.out.println("Address");
+        String address = sc.nextLine();
+        player.setId(player.getId());
+        player.setName((name == null || name.isBlank() || name.isEmpty()) ? player.getName() : name);
+        player.setAddress((address == null || address.isEmpty() || address.isBlank() ? player.getAddress() : address));
+        player.setRole(role == null? player.getRole() : playerRole);
+        return playerService.deletePlayerById(dashboardController, id);
+    }
+
     private void returnTableHeading() {
         System.out.println("Id\t\tName\t\tAddress\t\tPlayer Role");
     }
