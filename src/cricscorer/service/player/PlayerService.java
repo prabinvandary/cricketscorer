@@ -6,6 +6,7 @@ package cricscorer.service.player;
 
 import cricscorer.Model.Player;
 import cricscorer.controller.dashboard.DashboardController;
+import java.util.List;
 
 /**
  *
@@ -15,7 +16,7 @@ public interface PlayerService {
 
     Boolean savePlayer(DashboardController dashboardController, Player player);
 
-    Player getAllPlayerDetais();
+    List<Player> getAllPlayerDetais(DashboardController dashboardController);
 
     Player getPlayerById(DashboardController dashboardController, Integer id);
 

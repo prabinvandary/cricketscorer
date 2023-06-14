@@ -6,6 +6,7 @@ package cricscorer.service.player;
 
 import cricscorer.Model.Player;
 import cricscorer.controller.dashboard.DashboardController;
+import java.util.List;
 
 /**
  *
@@ -20,14 +21,13 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public Player getAllPlayerDetais() {
-
-        return null;
+    public List<Player> getAllPlayerDetais(DashboardController dashboardController) {
+       return dashboardController.getPlayerRepository().getAllPlayer(dashboardController);
     }
 
     @Override
     public Player getPlayerById(DashboardController dashboardController, Integer id) {
-       return dashboardController.getPlayerRepository().getPlayerById(dashboardController,id);
+        return dashboardController.getPlayerRepository().getPlayerById(dashboardController, id);
     }
 
 }
