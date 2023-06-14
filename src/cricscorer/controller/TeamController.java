@@ -29,8 +29,6 @@ public class TeamController {
             }
         }
         System.out.println("Id\t\tTeam Id\t\tMatch Id \t\tScore\t\t Is Winner \t\t Toss Action");
-        System.out.println("Hello");
-
         for (TeamMatchScore teamMatchScore : teamMatchScoreListById) {
             System.out.print(teamMatchScore.getId() + "\t\t" + teamMatchScore.getTeamId()
                     + "\t\t" + teamMatchScore.getMatchId() + "\t\t" + teamMatchScore.getScore() + "\t\t"

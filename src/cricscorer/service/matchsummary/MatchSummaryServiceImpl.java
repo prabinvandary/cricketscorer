@@ -6,6 +6,7 @@ package cricscorer.service.matchsummary;
 
 import cricscorer.Model.MatchSummary;
 import cricscorer.repository.matchsummary.MatchSummaryRepository;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,5 +52,11 @@ public class MatchSummaryServiceImpl implements MatchSummaryService {
     @Override
     public List<MatchSummary> getAllMatchSummaryById(MatchSummaryRepository matchSummaryRepository, Integer id) {
         return matchSummaryRepository.getById(id);
+    }
+
+    @Override
+    public Boolean insertDataToDatabase(MatchSummary matchSummary,MatchSummaryRepository matchSummaryRepository) throws SQLException {
+        matchSummaryRepository.insertDataToDatabase(matchSummary);
+        return true;
     }
 }
