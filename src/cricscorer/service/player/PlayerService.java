@@ -20,4 +20,5 @@ public interface PlayerService {
 
     Player getPlayerById(DashboardController dashboardController, Integer id);
 
+    Boolean deletePlayerById(DashboardController dashboardController, Integer id);
 }

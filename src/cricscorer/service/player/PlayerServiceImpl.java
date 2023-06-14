@@ -29,5 +29,11 @@ public class PlayerServiceImpl implements PlayerService {
     public Player getPlayerById(DashboardController dashboardController, Integer id) {
         return dashboardController.getPlayerRepository().getPlayerById(dashboardController, id);
     }
+    
+    
+    @Override
+    public Boolean deletePlayerById(DashboardController dashboardController, Integer id) {
+        return dashboardController.getPlayerRepository().deleteById(dashboardController, id);
+    }
 
 }
