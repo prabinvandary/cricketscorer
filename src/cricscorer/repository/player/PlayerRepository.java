@@ -104,8 +104,23 @@ public class PlayerRepository extends GenericRepository<Player, Integer> {
         }
         return player;
     }
-    public Boolean deleteById(DashboardController dashboardController,Integer id){
-    
-    return true;
+
+    public Boolean deleteById(DashboardController dashboardController, Integer id) {
+        String deleteQuery = "delete * from player p where p.id=?";
+        try {
+            Connection connection = dashboardController.getMySqlConnection().returnConnection();
+            PreparedStatement preparedStatement;
+            try {
+                preparedStatement = connection.prepareStatement(deleteQuery);
+                preparedStatement.setInt(1, id);
+                preparedStatement.execute();
+            } catch (SQLException ex) {
+                Logger.getLogger(PlayerRepository.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (ClassNotFoundException e) {
+            System.out.println(e);
+        }
+
+        return true;
     }
 }
