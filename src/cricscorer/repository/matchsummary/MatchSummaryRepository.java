@@ -39,7 +39,6 @@ public class MatchSummaryRepository extends GenericRepository<MatchSummary, Inte
             preparedStatement.setString(6, matchSummary.getAction().toString());
             preparedStatement.setDouble(7, matchSummary.getOver());
             preparedStatement.execute();
-
         } catch (ClassNotFoundException e) {
             System.out.println(e);
         }

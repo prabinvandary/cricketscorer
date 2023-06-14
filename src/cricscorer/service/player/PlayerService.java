@@ -5,6 +5,7 @@
 package cricscorer.service.player;
 
 import cricscorer.Model.Player;
+import cricscorer.controller.dashboard.DashboardController;
 
 /**
  *
@@ -12,10 +13,10 @@ import cricscorer.Model.Player;
  */
 public interface PlayerService {
 
-    Boolean savePlayer(Player player);
+    Boolean savePlayer(DashboardController dashboardController, Player player);
 
     Player getAllPlayerDetais();
 
-    Player getPlayerById(Integer id);
+    Player getPlayerById(DashboardController dashboardController, Integer id);
 
 }

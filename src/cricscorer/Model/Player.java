@@ -17,6 +17,10 @@ public class Player {
     private PlayerRole role;
     private String address;
 
+    public Player() {
+    }
+
+    
     public Player(Integer id, String name, PlayerRole role, String address) {
         this.id = id;
         this.name = name;

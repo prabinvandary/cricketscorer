@@ -5,6 +5,7 @@
 package cricscorer.service.player;
 
 import cricscorer.Model.Player;
+import cricscorer.controller.dashboard.DashboardController;
 
 /**
  *
@@ -13,7 +14,8 @@ import cricscorer.Model.Player;
 public class PlayerServiceImpl implements PlayerService {
 
     @Override
-    public Boolean savePlayer(Player player) {
+    public Boolean savePlayer(DashboardController dashboardController, Player player) {
+        dashboardController.getPlayerRepository().savePlayer(dashboardController, player);
         return true;
     }
 
@@ -24,8 +26,8 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public Player getPlayerById(Integer id) {
-        return null;
+    public Player getPlayerById(DashboardController dashboardController, Integer id) {
+       return dashboardController.getPlayerRepository().getPlayerById(dashboardController,id);
     }
 
 }

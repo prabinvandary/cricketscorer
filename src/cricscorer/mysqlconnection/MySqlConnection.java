@@ -7,7 +7,7 @@ public class MySqlConnection {
     private Connection con = null;
 
     public Connection returnConnection() throws ClassNotFoundException {
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         String url = "jdbc:mysql://localhost:3306/cricket_scorer";
         String userName = "prabin";
         String password = "Prabin12#$%";
