@@ -72,6 +72,14 @@ public abstract class GenericRepository<T extends GenericInterface, ID> implemen
         return true;
     }
 
+    public Boolean updateById(ID id, T t) {
+        T item = globalList.stream().filter(i -> i.getId().equals(id)).findFirst().orElse(null);
+        Integer index = globalList.indexOf(item);
+        globalList.add(index, t);
+        return item != null;
+    }
+
     @Override
-    public abstract ID getId(T item);
+    public abstract ID getId(T item
+    );
 }

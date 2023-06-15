@@ -4,6 +4,7 @@ import cricscorer.controller.MatchController;
 import cricscorer.controller.PlayerController;
 import cricscorer.controller.TeamController;
 import cricscorer.controller.TournamentController;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -19,10 +20,9 @@ public class UpdateEntitiesDashboardController {
     MatchController matchController = new MatchController();
 
     TournamentController tournamentController = new TournamentController();
-
     Scanner sc = new Scanner(System.in);
 
-    public void returnUpdateEntitesDashboard(DashboardController dashboardController) {
+    public void returnUpdateEntitesDashboard(DashboardController dashboardController) throws AssertionError, AssertionError, NoSuchFieldException, NumberFormatException, SQLException {
         System.out.println("Welcome to the Update Entities Dashboard:");
         System.out.println("Enter 1. For Player and 2. For Team   3. For Tournament     4. For Match");
         Integer menuId = sc.nextInt();
@@ -37,10 +37,14 @@ public class UpdateEntitiesDashboardController {
         return playerController.updatePlayerById(dashboardController);
     }
 
-    private void retunMenuWiseDashboard(DashboardController dashboardController, Integer menuId) {
+    private void retunMenuWiseDashboard(DashboardController dashboardController, Integer menuId) throws AssertionError, NoSuchFieldException, NumberFormatException, SQLException {
+        MainDashboardController mainDashboardController = new MainDashboardController(dashboardController);
+
         switch (menuId) {
             case 1:
-                playerController.updatePlayerById(dashboardController);
+                playerController.getAllList(dashboardController);
+                playerController.updatePlayerByIdInLocalRepository(dashboardController);
+                playerController.getAllList(dashboardController);
                 returnUpdateEntitesDashboard(dashboardController);
 
                 break;
@@ -59,7 +63,7 @@ public class UpdateEntitiesDashboardController {
                 returnUpdateEntitesDashboard(dashboardController);
                 break;
             default:
-                returnUpdateEntitesDashboard(dashboardController);
+                mainDashboardController.returnDashboard();
         }
     }
 

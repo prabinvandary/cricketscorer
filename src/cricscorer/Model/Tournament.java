@@ -5,13 +5,14 @@
 package cricscorer.Model;
 
 import cricscorer.enumvalues.TournamentType;
+import cricscorer.repository.generic.GenericInterface;
 import java.time.LocalDate;
 
 /**
  *
  * @author prabin
  */
-public class Tournament {
+public class Tournament implements GenericInterface{
 
     private Integer id;
     private TournamentType type;
@@ -27,6 +28,7 @@ public class Tournament {
         return date;
     }
 
+    @Override
     public Integer getId() {
         return id;
     }
@@ -43,6 +45,7 @@ public class Tournament {
         this.type = type;
     }
 
+    @Override
     public void setId(Integer id) {
         this.id = id;
     }

@@ -4,11 +4,13 @@
  */
 package cricscorer.Model;
 
+import cricscorer.repository.generic.GenericInterface;
+
 /**
  *
  * @author prabin
  */
-public class TeamTournament {
+public class TeamTournament implements GenericInterface{
 
     private Integer id;
     private Integer teamId;
@@ -20,6 +22,7 @@ public class TeamTournament {
         this.tournamentId = tournamentId;
     }
 
+    @Override
     public Integer getId() {
         return id;
     }
@@ -32,6 +35,7 @@ public class TeamTournament {
         return tournamentId;
     }
 
+    @Override
     public void setId(Integer id) {
         this.id = id;
     }

@@ -53,4 +53,10 @@ public class PlayerServiceImpl implements PlayerService {
         return dashboardController.getPlayerRepository().deleteById(id);
     }
 
+    @Override
+    public Boolean updatePlayerByIdLocalRepository(DashboardController dashboardController, Player player) {
+        dashboardController.getPlayerRepository().updateById(player.getId(), player);
+        return true;
+    }
+
 }

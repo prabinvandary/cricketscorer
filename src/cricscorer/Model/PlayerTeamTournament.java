@@ -5,12 +5,13 @@
 package cricscorer.Model;
 
 import cricscorer.enumvalues.PlayerPosition;
+import cricscorer.repository.generic.GenericInterface;
 
 /**
  *
  * @author prabin
  */
-public class PlayerTeamTournament {
+public class PlayerTeamTournament implements GenericInterface{
 
     private Integer id;
     private Integer playerTeamTournamentId;
@@ -26,6 +27,7 @@ public class PlayerTeamTournament {
         this.isWicketKeeper = isWicketKeeper;
     }
 
+    @Override
     public Integer getId() {
         return id;
     }
@@ -46,6 +48,7 @@ public class PlayerTeamTournament {
         return position;
     }
 
+    @Override
     public void setId(Integer id) {
         this.id = id;
     }

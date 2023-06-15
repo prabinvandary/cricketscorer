@@ -5,12 +5,13 @@
 package cricscorer.Model;
 
 import cricscorer.enumvalues.MatchBowlAction;
+import cricscorer.repository.generic.GenericInterface;
 
 /**
  *
  * @author prabin
  */
-public class MatchSummary {
+public class MatchSummary implements GenericInterface{
 
     private Integer id;
     private Integer run;
@@ -42,6 +43,7 @@ public class MatchSummary {
         return bowlerId;
     }
 
+    @Override
     public Integer getId() {
         return id;
     }
@@ -70,6 +72,7 @@ public class MatchSummary {
         this.bowlerId = bowlerId;
     }
 
+    @Override
     public void setId(Integer id) {
         this.id = id;
     }

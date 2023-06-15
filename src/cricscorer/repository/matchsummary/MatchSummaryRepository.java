@@ -9,6 +9,10 @@ import java.sql.*;
 
 public class MatchSummaryRepository extends GenericRepository<MatchSummary, Integer> {
 
+    public MatchSummaryRepository() {
+    }
+
+    
     public List<MatchSummary> returnMatchSummaryByBatsmenId(MatchSummaryRepository matchSummaryRepository, Integer id) throws NoSuchFieldException {
         Field field = MatchSummary.class.getDeclaredField("batsMenId");
         return matchSummaryRepository.getListByField(field, id);

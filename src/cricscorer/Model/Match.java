@@ -1,9 +1,8 @@
 package cricscorer.Model;
 
-import java.time.LocalDate;
-import java.util.Date;
+import cricscorer.repository.generic.GenericInterface;
 
-public class Match {
+public class Match implements GenericInterface{
 
     private Integer id;
     private String matchDate;
@@ -15,6 +14,7 @@ public class Match {
         this.venue = venue;
     }
 
+    @Override
     public Integer getId() {
         return id;
     }
@@ -27,6 +27,7 @@ public class Match {
         return venue;
     }
 
+    @Override
     public void setId(Integer id) {
         this.id = id;
     }

@@ -3,7 +3,6 @@ package cricscorer.controller.dashboard;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-
 public class MainDashboardController {
 
     DashboardController dashboardController;
@@ -42,7 +41,7 @@ public class MainDashboardController {
             case 4:
                 dashboardController.getViewStatisticsDashboard().returnViewStatisticsDashboard(dashboardController);
                 break;
-                case 5:
+            case 5:
                 dashboardController.getDeleteDashboard().returnDashboard(dashboardController);
                 break;
             default:

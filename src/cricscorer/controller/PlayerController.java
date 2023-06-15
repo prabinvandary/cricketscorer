@@ -13,9 +13,7 @@ import cricscorer.service.matchsummary.MatchSummaryService;
 import cricscorer.service.matchsummary.MatchSummaryServiceImpl;
 import cricscorer.service.player.PlayerService;
 import cricscorer.service.player.PlayerServiceImpl;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -34,6 +32,12 @@ public class PlayerController {
         this.summaryService = new MatchSummaryServiceImpl();
     }
 
+    /**
+     * Get Bowler statistics from match summary from database
+     *
+     * @param dashboardController
+     * @throws NoSuchFieldException
+     */
     void getBowlerStatistics(DashboardController dashboardController) throws NoSuchFieldException {
         System.out.println("Enter bowler id:");
         Integer id = sc.nextInt();
@@ -122,6 +126,11 @@ public class PlayerController {
 
     public Boolean updatePlayerById(DashboardController dashboardController) {
         Player player = getPlayerById(dashboardController);
+        player = askDetailsAndReturnPlayer(player);
+        return playerService.updatePlayerById(dashboardController, player);
+    }
+
+    private Player askDetailsAndReturnPlayer(Player player) {
         System.out.println("Enter new details:");
         System.out.println("Name:");
         String playerName = sc.next();
@@ -135,7 +144,7 @@ public class PlayerController {
         player.setName((playerName == null || playerName.isBlank() || playerName.isEmpty()) ? player.getName() : playerName);
         player.setAddress((addressString == null || addressString.isEmpty() || addressString.isBlank() ? player.getAddress() : addressString));
         player.setRole(roleInteger == null ? player.getRole() : playerRole);
-        return playerService.updatePlayerById(dashboardController, player);
+        return player;
     }
 
     private void returnTableHeading() {
@@ -155,12 +164,29 @@ public class PlayerController {
         return true;
     }
 
-    public Boolean getById(DashboardController dashboardController) {
+    public Player getById(DashboardController dashboardController) {
         System.out.println("Enter player id to view:");
         Integer id = sc.nextInt();
         List<Player> players = dashboardController.getPlayerRepository().getById(id);
         returnTableHeading();
         printPlayer(players);
-        return true;
+        return players.get(0);
+    }
+
+    public Player updatePlayerByIdInLocalRepository(DashboardController dashboardController) {
+        Player player = getById(dashboardController);
+        player = askDetailsAndReturnPlayer(player);
+        playerService.updatePlayerByIdLocalRepository(dashboardController, player);
+        return null;
+    }
+
+    public Player getByIdF(DashboardController dashboardController) {
+        System.out.println("Enter player id:");
+        Integer id = sc.nextInt();
+        Player player = playerService.getPlayerById(dashboardController, id);
+        returnTableHeading();
+        System.out.println(player.getId() + "\t\t" + player.getName()
+                + "\t\t" + player.getAddress() + "\t\t" + player.getRole());
+        return player;
     }
 }

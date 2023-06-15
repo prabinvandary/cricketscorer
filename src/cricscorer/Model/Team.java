@@ -1,6 +1,8 @@
 package cricscorer.Model;
 
-public class Team {
+import cricscorer.repository.generic.GenericInterface;
+
+public class Team implements GenericInterface{
 
     private Integer id;
     private String name;
@@ -14,6 +16,7 @@ public class Team {
         this.manager = manager;
     }
 
+    @Override
     public Integer getId() {
         return id;
     }
@@ -38,6 +41,7 @@ public class Team {
         this.manager = manager;
     }
 
+    @Override
     public void setId(Integer id) {
         this.id = id;
     }

@@ -136,7 +136,6 @@ public class PlayerRepository extends GenericRepository<Player, Integer> {
                 preparedStatement.setString(2, player.getRole().toString());
                 preparedStatement.setString(3, player.getAddress());
                 preparedStatement.setInt(4, player.getId());
-
                 Integer update = preparedStatement.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(PlayerRepository.class.getName()).log(Level.SEVERE, null, ex);
