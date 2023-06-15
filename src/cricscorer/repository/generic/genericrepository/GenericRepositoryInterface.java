@@ -19,6 +19,8 @@ public interface GenericRepositoryInterface<T, ID> {
 
     T getData(Integer id);
 
+    Boolean saveAllData(List<T> t);
+
     List<T> getAllData();
 
     <F> List<T> getListByField(Field field, F value);
@@ -26,6 +28,6 @@ public interface GenericRepositoryInterface<T, ID> {
     List<T> getById(ID id);
 
     Boolean deleteById(ID id);
-    
+
     ID getId(T item);
 }

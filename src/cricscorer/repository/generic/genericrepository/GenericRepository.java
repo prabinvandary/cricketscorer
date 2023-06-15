@@ -34,6 +34,10 @@ public abstract class GenericRepository<T extends GenericInterface, ID> implemen
         return globalList.get(id);
     }
 
+    public Boolean saveAllData(List<T> t) {
+        return globalList.addAll(t);
+    }
+
     @Override
     public List<T> getAllData() {
         return globalList;
@@ -80,6 +84,5 @@ public abstract class GenericRepository<T extends GenericInterface, ID> implemen
     }
 
     @Override
-    public abstract ID getId(T item
-    );
+    public abstract ID getId(T item);
 }
