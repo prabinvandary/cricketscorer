@@ -4,10 +4,16 @@
  */
 package cricscorer.controller;
 
+import cricscorer.controller.dashboard.DashboardController;
+
 /**
  *
  * @author prabin
  */
 public class TournamentController {
+
+    public void updateTournamentById(DashboardController dashboardController) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 }

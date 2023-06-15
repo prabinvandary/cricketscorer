@@ -75,15 +75,6 @@ public class PlayerController {
         }
     }
 
-//    void retunscpre(Integer id) {
-//        List<MatchSummary> matchSummaryByPlayerId = new ArrayList<>();
-//        for (MatchSummary scoreListByPlayerId : matchSummaryByPlayerId) {
-//            if (Objects.equals(scoreListByPlayerId.getBatsMenId(), id)) {
-//                matchSummaryByPlayerId.add(scoreListByPlayerId);
-//            }
-//        }
-//
-//    }
     public void savePlayer(DashboardController dashboardController) {
         System.out.println("Enter player details");
         System.out.println("Name:");

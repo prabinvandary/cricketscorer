@@ -37,4 +37,8 @@ public class TeamController {
         }
         return true;
     }
+
+    public void updateTeamById(DashboardController dashboardController) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

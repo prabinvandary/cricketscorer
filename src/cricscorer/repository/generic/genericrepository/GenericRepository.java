@@ -7,11 +7,7 @@ package cricscorer.repository.generic.genericrepository;
 import cricscorer.repository.generic.GenericInterface;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
@@ -66,14 +62,6 @@ public abstract class GenericRepository<T extends GenericInterface, ID> implemen
 
     @Override
     public Boolean deleteById(ID id) {
-
-//        globalList.stream().filter((item) -> {
-//            if (item.getId().equals(id)) {
-//                globalList.remove(item);
-//            }
-//            return true;
-//        });
-
         T item = globalList.stream().filter(i -> i.getId().equals(id)).findFirst().orElse(null);
         if (item != null) {
             globalList.remove(item);
