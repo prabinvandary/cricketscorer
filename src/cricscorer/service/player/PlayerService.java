@@ -18,10 +18,13 @@ public interface PlayerService {
 
     List<Player> getAllPlayerDetais(DashboardController dashboardController);
 
+    List<Player> getAllFromList(DashboardController dashboardController);
+
     Player getPlayerById(DashboardController dashboardController, Integer id);
 
     Boolean deletePlayerById(DashboardController dashboardController, Integer id);
 
     Boolean updatePlayerById(DashboardController dashboardController, Player player);
 
+    Boolean deleteById(DashboardController dashboardController, Integer id);
 }

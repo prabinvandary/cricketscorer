@@ -93,7 +93,7 @@ public class PlayerController {
         PlayerRole playerRole = (role == 1) ? PlayerRole.BATSMEN : (role == 2)
                 ? PlayerRole.BOWLER : (role == 3) ? PlayerRole.ALL_ROUNDER : null;
         System.out.println("Address");
-        String address = sc.nextLine();
+        String address = sc.next();
         playerService.savePlayer(dashboardController, new Player(null, name, playerRole, address));
     }
 
@@ -111,12 +111,16 @@ public class PlayerController {
     public Boolean getAllPlayer(DashboardController dashboardController) {
         returnTableHeading();
         List<Player> playerList = playerService.getAllPlayerDetais(dashboardController);
+        printPlayer(playerList);
+        return true;
+    }
+
+    private void printPlayer(List<Player> playerList) {
         for (Player player : playerList) {
             System.out.println(player.getId() + "\t\t" + player.getName()
                     + "\t\t" + player.getAddress() + "\t\t" + player.getRole());
             System.out.println("\n");
         }
-        return true;
     }
 
     public Boolean deletePlayerById(DashboardController dashboardController) {
@@ -139,11 +143,33 @@ public class PlayerController {
         player.setId(player.getId());
         player.setName((playerName == null || playerName.isBlank() || playerName.isEmpty()) ? player.getName() : playerName);
         player.setAddress((addressString == null || addressString.isEmpty() || addressString.isBlank() ? player.getAddress() : addressString));
-        player.setRole(roleInteger == null? player.getRole() : playerRole);
+        player.setRole(roleInteger == null ? player.getRole() : playerRole);
         return playerService.updatePlayerById(dashboardController, player);
     }
 
     private void returnTableHeading() {
         System.out.println("Id\t\tName\t\tAddress\t\tPlayer Role");
+    }
+
+    public Boolean deleteById(DashboardController dashboardController) {
+        System.out.println("Enter player id to delete:");
+        Integer id = sc.nextInt();
+        return playerService.deleteById(dashboardController, id);
+    }
+
+    public Boolean getAllList(DashboardController dashboardController) {
+        returnTableHeading();
+        List<Player> playerList = playerService.getAllFromList(dashboardController);
+        printPlayer(playerList);
+        return true;
+    }
+
+    public Boolean getById(DashboardController dashboardController) {
+        System.out.println("Enter player id to view:");
+        Integer id = sc.nextInt();
+        List<Player> players = dashboardController.getPlayerRepository().getById(id);
+        returnTableHeading();
+        printPlayer(players);
+        return true;
     }
 }

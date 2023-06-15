@@ -4,6 +4,7 @@
  */
 package cricscorer.repository.generic.genericrepository;
 
+import cricscorer.repository.generic.GenericInterface;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,29 +20,29 @@ import java.util.stream.Collectors;
  * @param <T>
  * @param <ID>
  */
-public abstract class GenericRepository<T, ID> implements GenericRepositoryInterface<T, ID> {
-    
+public abstract class GenericRepository<T extends GenericInterface, ID> implements GenericRepositoryInterface<T, ID> {
+
     List<T> globalList = new ArrayList<>();
-    
+
     public GenericRepository() {
     }
-    
+
     @Override
     public T saveData(T t) {
         globalList.add(t);
         return t;
     }
-    
+
     @Override
     public T getData(Integer id) {
         return globalList.get(id);
     }
-    
+
     @Override
     public List<T> getAllData() {
         return globalList;
     }
-    
+
     @Override
     public <F> List<T> getListByField(Field field, F value) {
         return globalList.stream()
@@ -55,14 +56,34 @@ public abstract class GenericRepository<T, ID> implements GenericRepositoryInter
                 })
                 .collect(Collectors.toList());
     }
-    
+
     @Override
     public List<T> getById(ID id) {
         return globalList.stream()
-                .filter(item -> id.equals(getId(item)))
+                .filter(item -> item.getId().equals(id))
                 .collect(Collectors.toList());
     }
-    
+
+    @Override
+    public Boolean deleteById(ID id) {
+
+//        globalList.stream().filter((item) -> {
+//            if (item.getId().equals(id)) {
+//                globalList.remove(item);
+//            }
+//            return true;
+//        });
+
+        T item = globalList.stream().filter(i -> i.getId().equals(id)).findFirst().orElse(null);
+        if (item != null) {
+            globalList.remove(item);
+        } else {
+            System.out.println("Not found");
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public abstract ID getId(T item);
 }

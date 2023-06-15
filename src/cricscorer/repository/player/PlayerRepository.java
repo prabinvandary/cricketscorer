@@ -137,14 +137,13 @@ public class PlayerRepository extends GenericRepository<Player, Integer> {
                 preparedStatement.setString(3, player.getAddress());
                 preparedStatement.setInt(4, player.getId());
 
-               Integer update= preparedStatement.executeUpdate();
+                Integer update = preparedStatement.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(PlayerRepository.class.getName()).log(Level.SEVERE, null, ex);
             }
         } catch (ClassNotFoundException e) {
             System.out.println(e);
         }
-
         return true;
     }
 }

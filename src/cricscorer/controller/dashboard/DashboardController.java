@@ -37,6 +37,7 @@ public class DashboardController {
 
     ViewStatisticsDashboardController viewStatisticsDashboard;
     
+    DeleteDashboard deleteDashboard;
     MySqlConnection mySqlConnection;
 
     public DashboardController() {
@@ -53,6 +54,7 @@ public class DashboardController {
         tournamentRepository = new TournamentRepository();
         matchRepository = new MatchRepository();
         mySqlConnection=new MySqlConnection();
+        deleteDashboard=new DeleteDashboard();
     }
 
     public MatchDashboardController getMatchDashboardController() {
@@ -155,39 +157,15 @@ public class DashboardController {
         this.mySqlConnection = mySqlConnection;
     }
 
-    
-//    public Boolean returnDashboard() {
-//        System.out.println("Hello welcome to the  cric scorer system.");
-//        System.out.println("How can i assit you??\n Availale services are:"
-//                + "\n 1.Add Match Entries   2.Update Entities      3.Create Entities"
-//                + "     4.View statistics and Details\n");
-//        System.out.println(" Enter the respective numbers to access the menus:");
-//        Scanner sc = new Scanner(System.in);
-//        Integer menuNumber = sc.nextInt();
-//        dashboardSwitching(menuNumber);
-//        return true;
-//    }
-//
-//    private void dashboardSwitching(Integer menuNumber) throws AssertionError {
-//        switch (menuNumber) {
-//            case 1:
-//                matchDashboardController.returnAddMatchDashboard(matchRepository);
-//                break;
-//            case 2:
-//                updateEntitiesDashboard.returnUpdateEntitesDashboard(dashboardController);
-//                break;
-//            case 3:
-//                createEntitiesDashboard.returnCreateEntitiesDashboard(dashboardController);
-//                break;
-//            case 4:
-//                viewStatisticsDashboard.returnViewStatisticsDashboard(matchRepository);
-//                break;
-//            default:
-//                throw new AssertionError();
-//        }
-//    }
+    public void setDeleteDashboard(DeleteDashboard deleteDashboard) {
+        this.deleteDashboard = deleteDashboard;
+    }
 
-    public MySqlConnection getMySqlConnection() {
+    public DeleteDashboard getDeleteDashboard() {
+        return deleteDashboard;
+    }
+
+     public MySqlConnection getMySqlConnection() {
         return mySqlConnection;
     }
 }

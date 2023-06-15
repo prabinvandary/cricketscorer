@@ -25,5 +25,7 @@ public interface GenericRepositoryInterface<T, ID> {
 
     List<T> getById(ID id);
 
+    Boolean deleteById(ID id);
+    
     ID getId(T item);
 }
