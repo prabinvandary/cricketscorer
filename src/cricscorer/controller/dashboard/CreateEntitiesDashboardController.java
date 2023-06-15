@@ -16,6 +16,8 @@ public class CreateEntitiesDashboardController {
         System.out.println("Welcome to the dashboard to create entites:");
         System.out.println("Enter 1. For Player 2. For Team 3. For Tournament:");
         Integer menuNumber = sc.nextInt();
+        sc.nextLine();
+        sc.nextLine();
         returnMenuDashboard(menuNumber, dashboardController);
         return true;
     }
@@ -24,13 +26,16 @@ public class CreateEntitiesDashboardController {
         switch (menuNumber) {
             case 1:
                 playerController.savePlayer(dashboardController);
-                playerController.getAllList(dashboardController);
+               
+            {
                 try {
-                    updateEntitiesDashboardController.returnUpdateEntitesDashboard(dashboardController);
+                    new MainDashboardController(dashboardController).returnDashboardFor(dashboardController);
                 } catch (NoSuchFieldException | NumberFormatException | SQLException ex) {
                     Logger.getLogger(CreateEntitiesDashboardController.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
                 break;
+
 
             default:
                 throw new AssertionError();

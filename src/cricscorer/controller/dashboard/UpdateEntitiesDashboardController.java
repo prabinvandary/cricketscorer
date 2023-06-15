@@ -63,7 +63,7 @@ public class UpdateEntitiesDashboardController {
                 returnUpdateEntitesDashboard(dashboardController);
                 break;
             default:
-                mainDashboardController.returnDashboard();
+                new MainDashboardController().returnDashboardFor(dashboardController);
         }
     }
 

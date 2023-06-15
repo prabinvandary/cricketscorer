@@ -6,7 +6,6 @@ package cricscorer.controller;
 
 import cricscorer.Model.MatchSummary;
 import cricscorer.Model.Player;
-import cricscorer.Model.TeamMatchScore;
 import cricscorer.controller.dashboard.DashboardController;
 import cricscorer.enumvalues.PlayerRole;
 import cricscorer.service.matchsummary.MatchSummaryService;
@@ -15,6 +14,8 @@ import cricscorer.service.player.PlayerService;
 import cricscorer.service.player.PlayerServiceImpl;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -22,6 +23,8 @@ import java.util.Scanner;
  */
 public class PlayerController {
 
+    private Pattern stringPattern;
+    
     Scanner sc = new Scanner(System.in);
 
     private final MatchSummaryService summaryService;
@@ -83,6 +86,13 @@ public class PlayerController {
         System.out.println("Enter player details");
         System.out.println("Name:");
         String name = sc.nextLine();
+        
+        Pattern pattern=Pattern.compile("[a-zA-Z\\s]+");
+        Matcher matcher=pattern.matcher(name);
+        if (!matcher.matches()) {
+            System.out.println("Name is not valid enter again:");
+            return;
+        }
         System.out.println("Enter respective number for player role:\n 1. BATSMEN\t 2. BOWLER\t 3.ALL ROUNDER");
         Integer role = sc.nextInt();
         PlayerRole playerRole = (role == 1) ? PlayerRole.BATSMEN : (role == 2)
