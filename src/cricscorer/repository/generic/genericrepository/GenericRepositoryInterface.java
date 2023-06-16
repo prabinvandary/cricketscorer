@@ -4,6 +4,7 @@
  */
 package cricscorer.repository.generic.genericrepository;
 
+import java.sql.*;
 import java.lang.reflect.Field;
 import java.util.List;
 
@@ -30,4 +31,11 @@ public interface GenericRepositoryInterface<T, ID> {
     Boolean deleteById(ID id);
 
     ID getId(T item);
+
+    ResultSet getAllDataFromDataBase(String tableName);
+
+    ResultSet getDataByIdFromDatabase(String tableName, Integer id);
+
+    String deleteByIdFromDatabase(String tableName, Integer id);
+
 }

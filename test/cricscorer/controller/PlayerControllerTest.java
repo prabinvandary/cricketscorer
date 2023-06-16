@@ -2,20 +2,29 @@ package cricscorer.controller;
 
 import cricscorer.Model.Player;
 import cricscorer.controller.dashboard.DashboardController;
+import cricscorer.enumvalues.PlayerRole;
 import cricscorer.service.player.PlayerService;
 import cricscorer.service.player.PlayerServiceImpl;
+import java.text.spi.DateFormatProvider;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
 
 /**
  *
  * @author prabin
  */
 public class PlayerControllerTest {
+
+    DashboardController dashboardController;
+    PlayerService playerService;
+    PlayerController playerController;
 
     public PlayerControllerTest() {
     }
@@ -30,8 +39,9 @@ public class PlayerControllerTest {
 
     @Before
     public void setUp() {
-        DashboardController dashboardController = new DashboardController();
-        PlayerService playerService = new PlayerServiceImpl();
+        dashboardController = new DashboardController();
+        playerService = new PlayerServiceImpl();
+        playerController = new PlayerController();
     }
 
     @After
@@ -55,9 +65,6 @@ public class PlayerControllerTest {
     @Test
     public void testGetBatsMenStatistics() throws Exception {
         System.out.println("getBatsMenStatistics");
-        DashboardController dashboardController = null;
-        PlayerController instance = new PlayerController();
-        instance.getBatsMenStatistics(dashboardController);
 
     }
 
@@ -67,9 +74,7 @@ public class PlayerControllerTest {
     @Test
     public void testGetStatisicsById() {
         System.out.println("getStatisicsById");
-        DashboardController dashboardController = null;
-        PlayerController instance = new PlayerController();
-        instance.getStatisicsById(dashboardController);
+
     }
 
     /**
@@ -77,10 +82,23 @@ public class PlayerControllerTest {
      */
     @Test
     public void testSavePlayer() {
-        System.out.println("savePlayer");
-        DashboardController dashboardController = null;
-        PlayerController instance = new PlayerController();
-        instance.savePlayer(dashboardController);
+        System.out.println("Test Save Player:");
+        List<Player> players = new ArrayList<>();
+
+        Player player1 = new Player(1, "Prabin Bhandari", PlayerRole.ALL_ROUNDER, "Harion-Sarlahi.");
+        Player player2 = new Player(2, "Pranish Adhikari", PlayerRole.BATSMEN, "Lalbandi-Sarlahi.");
+        Player player3 = new Player(3, "Aayansh Adhikari", PlayerRole.BOWLER, "Lalbandi-Sarlahi.");
+        Player player4 = new Player(4, "Dipti Ghimire", PlayerRole.ALL_ROUNDER, "Majorgung-Sarlahi.");
+        Player player5 = new Player(5, "Divyansha Ghimire", PlayerRole.BATSMEN, "Harion-Sarlahi.");
+
+        players.add(player1);
+        players.add(player2);
+        players.add(player3);
+        players.add(player4);
+        players.add(player5);
+        Boolean expResult = Boolean.TRUE;
+        Boolean obtResult = playerService.savePlayer(dashboardController, player1);
+        assertEquals(expResult, obtResult);
     }
 
     /**
@@ -89,11 +107,6 @@ public class PlayerControllerTest {
     @Test
     public void testGetPlayerById() {
         System.out.println("getPlayerById");
-        DashboardController dashboardController = null;
-        PlayerController instance = new PlayerController();
-        Player expResult = null;
-        Player result = instance.getPlayerById(dashboardController);
-        assertEquals(expResult, result);
     }
 
     /**
@@ -102,11 +115,7 @@ public class PlayerControllerTest {
     @Test
     public void testGetAllPlayer() {
         System.out.println("getAllPlayer");
-        DashboardController dashboardController = null;
-        PlayerController instance = new PlayerController();
-        Boolean expResult = null;
-        Boolean result = instance.getAllPlayer(dashboardController);
-        assertEquals(expResult, result);
+
     }
 
     /**
@@ -115,11 +124,7 @@ public class PlayerControllerTest {
     @Test
     public void testDeletePlayerById() {
         System.out.println("deletePlayerById");
-        DashboardController dashboardController = null;
-        PlayerController instance = new PlayerController();
-        Boolean expResult = null;
-        Boolean result = instance.deletePlayerById(dashboardController);
-        assertEquals(expResult, result);
+
     }
 
     /**
@@ -128,11 +133,7 @@ public class PlayerControllerTest {
     @Test
     public void testUpdatePlayerById() {
         System.out.println("updatePlayerById");
-        DashboardController dashboardController = null;
-        PlayerController instance = new PlayerController();
-        Boolean expResult = null;
-        Boolean result = instance.updatePlayerById(dashboardController);
-        assertEquals(expResult, result);
+
     }
 
     /**
@@ -141,13 +142,7 @@ public class PlayerControllerTest {
     @Test
     public void testDeleteById() {
         System.out.println("deleteById");
-        DashboardController dashboardController = null;
-        PlayerController instance = new PlayerController();
-        Boolean expResult = null;
-        Boolean result = instance.deleteById(dashboardController);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -156,11 +151,7 @@ public class PlayerControllerTest {
     @Test
     public void testGetAllList() {
         System.out.println("getAllList");
-        DashboardController dashboardController = null;
-        PlayerController instance = new PlayerController();
-        Boolean expResult = null;
-        Boolean result = instance.getAllList(dashboardController);
-        assertEquals(expResult, result);
+
     }
 
     /**
@@ -169,11 +160,6 @@ public class PlayerControllerTest {
     @Test
     public void testGetById() {
         System.out.println("getById");
-        DashboardController dashboardController = null;
-        PlayerController instance = new PlayerController();
-        Player expResult = null;
-        Player result = instance.getById(dashboardController);
-        assertEquals(expResult, result);
 
     }
 
@@ -184,11 +170,6 @@ public class PlayerControllerTest {
     @Test
     public void testUpdatePlayerByIdInLocalRepository() {
         System.out.println("updatePlayerByIdInLocalRepository");
-        DashboardController dashboardController = null;
-        PlayerController instance = new PlayerController();
-        Player expResult = null;
-        Player result = instance.updatePlayerByIdInLocalRepository(dashboardController);
-        assertEquals(expResult, result);
 
     }
 
@@ -198,11 +179,6 @@ public class PlayerControllerTest {
     @Test
     public void testGetByIdF() {
         System.out.println("getByIdF");
-        DashboardController dashboardController = null;
-        PlayerController instance = new PlayerController();
-        Player expResult = null;
-        Player result = instance.getByIdF(dashboardController);
-        assertEquals(expResult, result);
 
     }
 

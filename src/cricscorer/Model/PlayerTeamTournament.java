@@ -5,39 +5,35 @@
 package cricscorer.Model;
 
 import cricscorer.enumvalues.PlayerPosition;
+import cricscorer.repository.generic.GenericAbstractClass;
 import cricscorer.repository.generic.GenericInterface;
 
 /**
  *
  * @author prabin
  */
-public class PlayerTeamTournament implements GenericInterface{
+public class PlayerTeamTournament extends GenericAbstractClass  implements GenericInterface{
 
-    private Integer id;
     private Integer playerTeamTournamentId;
     private Integer playerId;
     private PlayerPosition position;
     private Boolean isWicketKeeper;
 
     public PlayerTeamTournament(Integer id, Integer playerTeamTournamentId, Integer playerId, PlayerPosition position, Boolean isWicketKeeper) {
-        this.id = id;
+        this.setId(id);
         this.playerTeamTournamentId = playerTeamTournamentId;
         this.playerId = playerId;
         this.position = position;
         this.isWicketKeeper = isWicketKeeper;
     }
 
-    @Override
-    public Integer getId() {
-        return id;
-    }
-
-    public Boolean getIsWicketKeeper() {
-        return isWicketKeeper;
-    }
-
     public Integer getPlayerId() {
         return playerId;
+    }
+
+    
+    public Boolean getIsWicketKeeper() {
+        return isWicketKeeper;
     }
 
     public Integer getPlayerTeamTournamentId() {
@@ -46,11 +42,6 @@ public class PlayerTeamTournament implements GenericInterface{
 
     public PlayerPosition getPosition() {
         return position;
-    }
-
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public void setIsWicketKeeper(Boolean isWicketKeeper) {
@@ -67,6 +58,11 @@ public class PlayerTeamTournament implements GenericInterface{
 
     public void setPosition(PlayerPosition position) {
         this.position = position;
+    }
+
+    @Override
+    public String getTableName() {
+        return "player_team_tournament";
     }
 
 }

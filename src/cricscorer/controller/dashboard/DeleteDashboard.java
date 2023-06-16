@@ -32,7 +32,7 @@ public class DeleteDashboard {
     private void dashboardSelection(Integer menuId, DashboardController dashboardController) {
         switch (menuId) {
             case 1:
-                playerController.deleteById(dashboardController);
+                playerController.deletePlayerFromDatabase(dashboardController);
                 break;
             default:
                 throw new AssertionError();
@@ -77,11 +77,11 @@ public class DeleteDashboard {
         sc.nextLine();
         switch (menuId) {
             case 1:
-                playerController.getById(dashboardController);
+                playerController.getPlayerByIdFromDatabase(dashboardController);
                 returnDashboard(dashboardController);
                 break;
             case 2:
-                playerController.getAllList(dashboardController);
+                playerController.getAllPlayerFromDatabase(dashboardController);
                 returnDashboard(dashboardController);
 
                 break;

@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 public class PlayerController {
 
     private Pattern stringPattern;
-    
+
     Scanner sc = new Scanner(System.in);
 
     private final MatchSummaryService summaryService;
@@ -82,16 +82,16 @@ public class PlayerController {
         }
     }
 
-    public void savePlayer(DashboardController dashboardController) {
+    public Boolean savePlayer(DashboardController dashboardController) {
         System.out.println("Enter player details");
         System.out.println("Name:");
         String name = sc.nextLine();
-        
-        Pattern pattern=Pattern.compile("[a-zA-Z\\s]+");
-        Matcher matcher=pattern.matcher(name);
+
+        Pattern pattern = Pattern.compile("[a-zA-Z\\s]+");
+        Matcher matcher = pattern.matcher(name);
         if (!matcher.matches()) {
             System.out.println("Name is not valid enter again:");
-            return;
+            return false;
         }
         System.out.println("Enter respective number for player role:\n 1. BATSMEN\t 2. BOWLER\t 3.ALL ROUNDER");
         Integer role = sc.nextInt();
@@ -100,6 +100,7 @@ public class PlayerController {
         System.out.println("Address");
         String address = sc.next();
         playerService.savePlayer(dashboardController, new Player(null, name, playerRole, address));
+        return true;
     }
 
     public Player getPlayerById(DashboardController dashboardController) {
@@ -198,5 +199,30 @@ public class PlayerController {
         System.out.println(player.getId() + "\t\t" + player.getName()
                 + "\t\t" + player.getAddress() + "\t\t" + player.getRole());
         return player;
+    }
+
+    public Boolean getPlayerByIdFromDatabase(DashboardController dashboardController) {
+        System.out.println("Enter player id:");
+        Integer id = sc.nextInt();
+        Player player = playerService.getPlayerByIdFromDatabase(dashboardController, id);
+        returnTableHeading();
+        System.out.println(player.getId() + "\t\t" + player.getName()
+                + "\t\t" + player.getAddress() + "\t\t" + player.getRole());
+
+        return true;
+    }
+
+    public Boolean deletePlayerFromDatabase(DashboardController dashboardController) {
+        System.out.println("Enter player id:");
+        Integer id = sc.nextInt();
+        System.out.println(dashboardController.getPlayerRepository().deleteByIdFromDatabase("player", id));
+        return true;
+    }
+
+    public Boolean getAllPlayerFromDatabase(DashboardController dashboardController) {
+        returnTableHeading();
+        List<Player> playerList = playerService.getAllFromDatabase(dashboardController);
+        printPlayer(playerList);
+        return true;
     }
 }

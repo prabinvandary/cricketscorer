@@ -29,4 +29,9 @@ public interface PlayerService {
     Boolean deleteById(DashboardController dashboardController, Integer id);
 
     Boolean updatePlayerByIdLocalRepository(DashboardController dashboardController, Player player);
+
+    List<Player> getAllFromDatabase(DashboardController dashboardController);
+
+    Player getPlayerByIdFromDatabase(DashboardController dashboardController, Integer id);
+
 }

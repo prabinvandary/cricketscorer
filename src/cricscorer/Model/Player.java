@@ -5,6 +5,7 @@
 package cricscorer.Model;
 
 import cricscorer.enumvalues.PlayerRole;
+import cricscorer.repository.generic.GenericAbstractClass;
 import cricscorer.repository.generic.GenericInterface;
 import java.util.Objects;
 
@@ -12,68 +13,56 @@ import java.util.Objects;
  *
  * @author prabin
  */
-public class Player implements GenericInterface{
-
-    private Integer id;
+public class Player extends GenericAbstractClass implements GenericInterface {
+    
     private String name;
     private PlayerRole role;
     private String address;
-
+    
     public Player() {
     }
-
     
     public Player(Integer id, String name, PlayerRole role, String address) {
-        this.id = id;
+        this.setId(id);
         this.name = name;
         this.role = role;
         this.address = address;
     }
-
-    @Override
-    public Integer getId() {
-        return id;
-    }
-
+    
     public PlayerRole getRole() {
         return role;
     }
-
+    
     public String getName() {
         return name;
     }
-
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
+    
     public String getAddress() {
         return address;
     }
-
+    
     public void setName(String name) {
         this.name = name;
     }
-
+    
     public void setRole(PlayerRole role) {
         this.role = role;
     }
-
+    
     public void setAddress(String address) {
         this.address = address;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 83 * hash + Objects.hashCode(this.id);
+        hash = 83 * hash + Objects.hashCode(this.getId());
         hash = 83 * hash + Objects.hashCode(this.name);
         hash = 83 * hash + Objects.hashCode(this.role);
         hash = 83 * hash + Objects.hashCode(this.address);
         return hash;
     }
-
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -92,11 +81,15 @@ public class Player implements GenericInterface{
         if (!Objects.equals(this.address, other.address)) {
             return false;
         }
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.getId(), other.getId())) {
             return false;
         }
         return this.role == other.role;
     }
     
-   
+    @Override
+    public String getTableName() {
+        return "player";
+    }
+    
 }

@@ -11,4 +11,5 @@ package cricscorer.repository.generic;
 public interface GenericInterface {
    Integer getId();
    void  setId(Integer id);
+   String getTableName();
 }

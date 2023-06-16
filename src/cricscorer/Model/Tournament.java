@@ -5,6 +5,7 @@
 package cricscorer.Model;
 
 import cricscorer.enumvalues.TournamentType;
+import cricscorer.repository.generic.GenericAbstractClass;
 import cricscorer.repository.generic.GenericInterface;
 import java.time.LocalDate;
 
@@ -12,25 +13,19 @@ import java.time.LocalDate;
  *
  * @author prabin
  */
-public class Tournament implements GenericInterface{
+public class Tournament extends GenericAbstractClass implements GenericInterface {
 
-    private Integer id;
     private TournamentType type;
     private LocalDate date;
 
     public Tournament(Integer id, TournamentType type, LocalDate date) {
-        this.id = id;
+        this.setId(id);
         this.type = type;
         this.date = date;
     }
 
     public LocalDate getDate() {
         return date;
-    }
-
-    @Override
-    public Integer getId() {
-        return id;
     }
 
     public TournamentType getType() {
@@ -46,7 +41,7 @@ public class Tournament implements GenericInterface{
     }
 
     @Override
-    public void setId(Integer id) {
-        this.id = id;
+    public String getTableName() {
+        return "tournament";
     }
 }

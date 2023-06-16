@@ -8,7 +8,13 @@ import cricscorer.Model.Player;
 import cricscorer.Util.GenerateId;
 import cricscorer.controller.dashboard.DashboardController;
 import cricscorer.enumvalues.PlayerRole;
+import cricscorer.repository.generic.genericrepository.GenericRepository;
+import cricscorer.repository.player.PlayerRepository;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -57,6 +63,47 @@ public class PlayerServiceImpl implements PlayerService {
     public Boolean updatePlayerByIdLocalRepository(DashboardController dashboardController, Player player) {
         dashboardController.getPlayerRepository().updateById(player.getId(), player);
         return true;
+    }
+
+    @Override
+    public List<Player> getAllFromDatabase(DashboardController dashboardController) {
+        List<Player> players = new ArrayList<>();
+        ResultSet resultset = dashboardController.getPlayerRepository().getAllDataFromDataBase("player");
+        try {
+            if (resultset != null) {
+                while (resultset.next()) {
+                    Player singlePlayer = new Player();
+                    singlePlayer.setId(resultset.getInt("id"));
+                    singlePlayer.setName(resultset.getString("name"));
+                    singlePlayer.setRole(PlayerRole.valueOf(resultset.getString("player_role")));
+                    singlePlayer.setAddress(resultset.getString("address"));
+                    players.add(singlePlayer);
+                }
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(GenericRepository.class.getName()).log(Level.SEVERE, null, e);
+
+        }
+
+        return players;
+    }
+
+    @Override
+    public Player getPlayerByIdFromDatabase(DashboardController dashboardController, Integer id) {
+        Player player = new Player();
+        try {
+            ResultSet resultset = dashboardController.getPlayerRepository().getDataByIdFromDatabase("player", id);
+            if (resultset.next()) {
+                player.setId(resultset.getInt("id"));
+                player.setName(resultset.getString("name"));
+                player.setRole(PlayerRole.valueOf(resultset.getString("player_role")));
+                player.setAddress(resultset.getString("address"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PlayerRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return player;
+
     }
 
 }

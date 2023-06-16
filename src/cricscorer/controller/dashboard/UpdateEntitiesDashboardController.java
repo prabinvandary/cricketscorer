@@ -42,7 +42,7 @@ public class UpdateEntitiesDashboardController {
 
         switch (menuId) {
             case 1:
-                playerController.getAllList(dashboardController);
+                playerController.getAllPlayerFromDatabase(dashboardController);
                 playerController.updatePlayerByIdInLocalRepository(dashboardController);
                 playerController.getAllList(dashboardController);
                 returnUpdateEntitesDashboard(dashboardController);

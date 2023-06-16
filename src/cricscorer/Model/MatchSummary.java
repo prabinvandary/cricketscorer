@@ -5,15 +5,15 @@
 package cricscorer.Model;
 
 import cricscorer.enumvalues.MatchBowlAction;
+import cricscorer.repository.generic.GenericAbstractClass;
 import cricscorer.repository.generic.GenericInterface;
 
 /**
  *
  * @author prabin
  */
-public class MatchSummary implements GenericInterface{
+public class MatchSummary extends GenericAbstractClass implements GenericInterface{
 
-    private Integer id;
     private Integer run;
     private Double over;
     private MatchBowlAction action;
@@ -22,7 +22,7 @@ public class MatchSummary implements GenericInterface{
     private Integer matchId;
 
     public MatchSummary(Integer id, Integer run, Double over, MatchBowlAction action, Integer batsMenId, Integer bowlerId, Integer matchId) {
-        this.id = id;
+        this.setId(id);
         this.run = run;
         this.over = over;
         this.action = action;
@@ -43,10 +43,6 @@ public class MatchSummary implements GenericInterface{
         return bowlerId;
     }
 
-    @Override
-    public Integer getId() {
-        return id;
-    }
 
     public Integer getMatchId() {
         return matchId;
@@ -72,11 +68,6 @@ public class MatchSummary implements GenericInterface{
         this.bowlerId = bowlerId;
     }
 
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public void setMatchId(Integer matchId) {
         this.matchId = matchId;
     }
@@ -87,5 +78,10 @@ public class MatchSummary implements GenericInterface{
 
     public void setRun(Integer run) {
         this.run = run;
+    }
+
+    @Override
+    public String getTableName() {
+        return "match_summary";
     }
 }

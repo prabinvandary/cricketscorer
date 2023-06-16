@@ -225,7 +225,7 @@ public class GenericRepositoryTest {
         Player item = null;
         Integer expResult = null;
         Integer result = genericRepository.getId(item);
-               assertEquals(expResult, result);
+        assertEquals(expResult, result);
     }
 
 }
