@@ -38,6 +38,7 @@ public class DashboardController {
     ViewStatisticsDashboardController viewStatisticsDashboard;
     
     DeleteDashboard deleteDashboard;
+    
     MySqlConnection mySqlConnection;
 
     public DashboardController() {
