@@ -7,9 +7,7 @@ package cricscorer.service.teamMatchScoreService;
 import cricscorer.Model.TeamMatchScore;
 import cricscorer.pojo.TeamScoreDetailPojo;
 import cricscorer.repository.teammatchscore.TeamMatchScoreRepository;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 /**

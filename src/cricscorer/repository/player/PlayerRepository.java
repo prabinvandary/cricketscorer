@@ -4,7 +4,6 @@
  */
 package cricscorer.repository.player;
 
-import com.mysql.cj.protocol.Resultset;
 import cricscorer.Model.Player;
 import cricscorer.controller.dashboard.DashboardController;
 import cricscorer.enumvalues.PlayerRole;

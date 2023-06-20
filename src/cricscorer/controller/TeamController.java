@@ -2,8 +2,6 @@ package cricscorer.controller;
 
 import cricscorer.Model.TeamMatchScore;
 import cricscorer.controller.dashboard.DashboardController;
-import cricscorer.repository.matchsummary.MatchSummaryRepository;
-import cricscorer.repository.teammatchscore.TeamMatchScoreRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

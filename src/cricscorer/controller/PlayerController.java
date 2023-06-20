@@ -152,8 +152,8 @@ public class PlayerController {
         System.out.println("Address");
         String addressString = sc.next();
         player.setId(player.getId());
-        player.setName((playerName == null || playerName.isBlank() || playerName.isEmpty()) ? player.getName() : playerName);
-        player.setAddress((addressString == null || addressString.isEmpty() || addressString.isBlank() ? player.getAddress() : addressString));
+        player.setName((playerName == null || playerName.isEmpty() || playerName.isEmpty()) ? player.getName() : playerName);
+        player.setAddress((addressString == null || addressString.isEmpty() || addressString.isEmpty() ? player.getAddress() : addressString));
         player.setRole(roleInteger == null ? player.getRole() : playerRole);
         return player;
     }

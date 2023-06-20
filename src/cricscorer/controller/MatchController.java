@@ -2,11 +2,6 @@ package cricscorer.controller;
 
 import cricscorer.controller.dashboard.DashboardController;
 import cricscorer.controller.dashboard.MainDashboardController;
-import cricscorer.controller.dashboard.MatchDashboardController;
-import cricscorer.repository.match.MatchRepository;
-import cricscorer.repository.matchsummary.MatchSummaryRepository;
-import cricscorer.repository.teammatchscore.TeamMatchScoreRepository;
-import cricscorer.service.Match.MatchServiceImpl;
 import java.sql.SQLException;
 import java.util.Scanner;
 

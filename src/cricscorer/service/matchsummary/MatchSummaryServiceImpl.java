@@ -7,7 +7,6 @@ package cricscorer.service.matchsummary;
 import cricscorer.Model.MatchSummary;
 import cricscorer.repository.matchsummary.MatchSummaryRepository;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

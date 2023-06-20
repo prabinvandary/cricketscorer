@@ -6,16 +6,12 @@ package cricscorer.controller;
 
 import cricscorer.Model.MatchSummary;
 import cricscorer.Util.CalculateRunRate;
-import cricscorer.Util.GenerateId;
 import cricscorer.enumvalues.MatchBowlAction;
-import cricscorer.enumvalues.TossAction;
 import cricscorer.pojo.TeamScoreDetailPojo;
 import cricscorer.repository.matchsummary.MatchSummaryRepository;
 import cricscorer.service.matchsummary.MatchSummaryService;
 import cricscorer.service.matchsummary.MatchSummaryServiceImpl;
 import java.sql.SQLException;
-import java.util.Objects;
-import java.util.Random;
 import java.util.Scanner;
 
 /**

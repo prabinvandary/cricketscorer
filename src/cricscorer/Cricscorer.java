@@ -4,9 +4,7 @@
  */
 package cricscorer;
 
-import cricscorer.controller.dashboard.DashboardController;
 import cricscorer.controller.dashboard.MainDashboardController;
-import cricscorer.dashboard.Dashboard;
 import java.sql.SQLException;
 
 /**
@@ -17,13 +15,11 @@ public class Cricscorer {
 
     /**
      * @param args the command line arguments
+     * @throws java.lang.NoSuchFieldException
+     * @throws java.sql.SQLException
      */
     public static void main(String[] args) throws AssertionError, NoSuchFieldException, NumberFormatException, SQLException {
         MainDashboardController mainDashboardController = new MainDashboardController();
-//        DashboardController dashboard = new DashboardController();
-//        // TODO code application logic here
-//        System.out.println(dashboard.returnDashboard());
-
         System.out.println(mainDashboardController.returnDashboard());
     }
 
