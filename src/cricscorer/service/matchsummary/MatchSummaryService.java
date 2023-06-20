@@ -5,6 +5,8 @@
 package cricscorer.service.matchsummary;
 
 import cricscorer.Model.MatchSummary;
+import cricscorer.repository.matchsummary.MatchSummaryRepository;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -12,7 +14,19 @@ import java.util.List;
  * @author prabin
  */
 public interface MatchSummaryService {
-    Boolean saveMatchSummary(MatchSummary matchSummary);
-    List<MatchSummary> getAllMatchSummary();
+
+    Boolean saveMatchSummary(MatchSummaryRepository matchSummaryRepository, MatchSummary matchSummary);
+
+    List<MatchSummary> getAllMatchSummary(MatchSummaryRepository matchSummaryRepository);
+
     MatchSummary matchSummaryById(Integer id);
+
+    List<MatchSummary> getAllMatchSummaryByBatsmenId(MatchSummaryRepository matchSummaryRepository, Integer id) throws NoSuchFieldException;
+
+    List<MatchSummary> getAllMatchSummaryByBowlerId(MatchSummaryRepository matchSummaryRepository, Integer id) throws NoSuchFieldException;
+
+    List<MatchSummary> getAllMatchSummaryById(MatchSummaryRepository matchSummaryRepository, Integer id);
+
+    Boolean insertDataToDatabase(MatchSummary matchSummary,MatchSummaryRepository matchSummaryRepository) throws SQLException;
+
 }

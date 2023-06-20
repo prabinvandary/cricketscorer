@@ -11,7 +11,10 @@ import cricscorer.Model.Tournament;
  * @author prabin
  */
 public interface TournamentService {
+
     Boolean saveTournament(Tournament tournament);
+
     Tournament getAllTournament();
+
     Tournament getTournamentById(Integer id);
 }

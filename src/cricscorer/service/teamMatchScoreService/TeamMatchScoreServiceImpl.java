@@ -5,9 +5,10 @@
 package cricscorer.service.teamMatchScoreService;
 
 import cricscorer.Model.TeamMatchScore;
-import java.util.ArrayList;
+import cricscorer.pojo.TeamScoreDetailPojo;
+import cricscorer.repository.teammatchscore.TeamMatchScoreRepository;
 import java.util.List;
-import java.util.Map;
+import java.util.Objects;
 
 /**
  *
@@ -15,21 +16,51 @@ import java.util.Map;
  */
 public class TeamMatchScoreServiceImpl implements TeamMatchScoreService {
 
-    List<TeamMatchScore> teamMatch = new ArrayList<>();
-
     @Override
-    public Boolean saveTeamMatchScore(TeamMatchScore teamMatchScore) {
-        teamMatch.add(teamMatchScore);
+    public Boolean saveTeamMatchScore(TeamMatchScoreRepository matchSummaryRepository, TeamMatchScore teamMatchScore) {
+        matchSummaryRepository.saveData(teamMatchScore);
         return true;
     }
 
     @Override
-    public List<TeamMatchScore> getAllTeamMatchScore() {
-        return teamMatch;
+    public void updateTeamMatchScore(List<TeamScoreDetailPojo> teamScoreDetailPojo,
+            TeamMatchScoreRepository teamMatchScoreRepository, Integer matchId) {
+        updateIsWinner(teamScoreDetailPojo);
+        List<TeamMatchScore> allTeamMatchScore = teamMatchScoreRepository.getAllData();
+        for (TeamScoreDetailPojo teamScoreDetailPojo1 : teamScoreDetailPojo) {
+            for (TeamMatchScore match : allTeamMatchScore) {
+                if (Objects.equals(match.getMatchId(), matchId)
+                        && Objects.equals(match.getTeamId(), teamScoreDetailPojo1.getTeamId())) {
+                    match.setScore(teamScoreDetailPojo1.getTeamScore());
+                    match.setIsWinner(teamScoreDetailPojo1.getIsWinner());
+                }
+            }
+        }
+    }
+    // Find the highest score
+
+    private Boolean updateIsWinner(List<TeamScoreDetailPojo> teamScoreDetailPojos) {
+        Integer highestScore = Integer.MIN_VALUE;
+
+        for (TeamScoreDetailPojo scoreDetailPojo : teamScoreDetailPojos) {
+            if (scoreDetailPojo.getTeamScore() > highestScore) {
+                highestScore = scoreDetailPojo.getTeamScore();
+            }
+        }
+
+        // Set the isWinner flag based on the highest score
+        for (TeamScoreDetailPojo scoreDetailPojo : teamScoreDetailPojos) {
+            if (Objects.equals(scoreDetailPojo.getTeamScore(), highestScore)) {
+                scoreDetailPojo.setIsWinner(true);
+            } else {
+                scoreDetailPojo.setIsWinner(false);
+            }
+        }
+        return true;
     }
 
     @Override
-    public TeamMatchScore getTeamMatchScoreById(Integer id) {
-        return teamMatch.get(id);
+    public List<TeamMatchScore> getAllTeamMatchScore(TeamMatchScoreRepository teamMatchScoreRepository) {
+        return teamMatchScoreRepository.getAllData();
     }
 }

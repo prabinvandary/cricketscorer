@@ -5,30 +5,27 @@
 package cricscorer.Model;
 
 import cricscorer.enumvalues.TournamentType;
+import cricscorer.repository.generic.GenericAbstractClass;
+import cricscorer.repository.generic.GenericInterface;
 import java.time.LocalDate;
 
 /**
  *
  * @author prabin
  */
-public class Tournament {
+public class Tournament extends GenericAbstractClass implements GenericInterface {
 
-    private Integer id;
     private TournamentType type;
     private LocalDate date;
 
     public Tournament(Integer id, TournamentType type, LocalDate date) {
-        this.id = id;
+        this.setId(id);
         this.type = type;
         this.date = date;
     }
 
     public LocalDate getDate() {
         return date;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     public TournamentType getType() {
@@ -43,7 +40,8 @@ public class Tournament {
         this.type = type;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    @Override
+    public String getTableName() {
+        return "tournament";
     }
 }

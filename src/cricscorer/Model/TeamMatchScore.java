@@ -5,13 +5,15 @@
 package cricscorer.Model;
 
 import cricscorer.enumvalues.TossAction;
+import cricscorer.repository.generic.GenericAbstractClass;
+import cricscorer.repository.generic.GenericInterface;
 
 /**
  *
  * @author prabin
  */
-public class TeamMatchScore {
-    private Integer id;
+public class TeamMatchScore  extends GenericAbstractClass implements GenericInterface{
+
     private Integer teamId;
     private Integer score;
     private Integer matchId;
@@ -19,16 +21,12 @@ public class TeamMatchScore {
     private TossAction tossAction;
 
     public TeamMatchScore(Integer id, Integer teamId, Integer score, Integer matchId, Boolean isWinner, TossAction tossAction) {
-        this.id = id;
+        this.setId(id);
         this.teamId = teamId;
         this.score = score;
         this.matchId = matchId;
         this.isWinner = isWinner;
         this.tossAction = tossAction;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     public Boolean getIsWinner() {
@@ -51,9 +49,6 @@ public class TeamMatchScore {
         return tossAction;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public void setIsWinner(Boolean isWinner) {
         this.isWinner = isWinner;
@@ -74,5 +69,10 @@ public class TeamMatchScore {
     public void setTossAction(TossAction tossAction) {
         this.tossAction = tossAction;
     }
-    
+
+    @Override
+    public String getTableName() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

@@ -1,16 +1,42 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package cricscorer.controller;
 
-/**
- *
- * @author prabin
- */
+import cricscorer.Model.TeamMatchScore;
+import cricscorer.controller.dashboard.DashboardController;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Scanner;
+
 public class TeamController {
+
+    Scanner sc = new Scanner(System.in);
 
     public String getTeamName() {
         return "Dare devils";
+    }
+
+    Boolean getTeamStatistics(DashboardController dashboardController) {
+
+        System.out.println("Enter team id to see it's statistics:");
+        Integer id = sc.nextInt();
+        List<TeamMatchScore> teamMatchScoreList = dashboardController.getTeamMatchScoreRepository().getAllData();
+        List<TeamMatchScore> teamMatchScoreListById = new ArrayList<>();
+        for (TeamMatchScore teamMatchScore : teamMatchScoreList) {
+            if (Objects.equals(teamMatchScore.getTeamId(), id)) {
+                teamMatchScoreListById.add(teamMatchScore);
+            }
+        }
+        System.out.println("Id\t\tTeam Id\t\tMatch Id \t\tScore\t\t Is Winner \t\t Toss Action");
+        for (TeamMatchScore teamMatchScore : teamMatchScoreListById) {
+            System.out.print(teamMatchScore.getId() + "\t\t" + teamMatchScore.getTeamId()
+                    + "\t\t" + teamMatchScore.getMatchId() + "\t\t" + teamMatchScore.getScore() + "\t\t"
+                    + teamMatchScore.getIsWinner() + "\t\t" + teamMatchScore.getTossAction());
+            System.out.println("\n");
+        }
+        return true;
+    }
+
+    public void updateTeamById(DashboardController dashboardController) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

@@ -5,16 +5,33 @@
 package cricscorer.service.player;
 
 import cricscorer.Model.Player;
+import cricscorer.controller.dashboard.DashboardController;
+import java.util.List;
 
 /**
  *
  * @author prabin
  */
 public interface PlayerService {
-    Boolean savePlayer(Player player);
-    
-    Player getAllPlayerDetais();
-    
-    Player getPlayerById(Integer id);
-    
+
+    Boolean savePlayer(DashboardController dashboardController, Player player);
+
+    List<Player> getAllPlayerDetais(DashboardController dashboardController);
+
+    List<Player> getAllFromList(DashboardController dashboardController);
+
+    Player getPlayerById(DashboardController dashboardController, Integer id);
+
+    Boolean deletePlayerById(DashboardController dashboardController, Integer id);
+
+    Boolean updatePlayerById(DashboardController dashboardController, Player player);
+
+    Boolean deleteById(DashboardController dashboardController, Integer id);
+
+    Boolean updatePlayerByIdLocalRepository(DashboardController dashboardController, Player player);
+
+    List<Player> getAllFromDatabase(DashboardController dashboardController);
+
+    Player getPlayerByIdFromDatabase(DashboardController dashboardController, Integer id);
+
 }

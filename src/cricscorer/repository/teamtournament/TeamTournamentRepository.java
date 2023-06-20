@@ -4,10 +4,18 @@
  */
 package cricscorer.repository.teamtournament;
 
+import cricscorer.Model.TeamTournament;
+import cricscorer.repository.generic.genericrepository.GenericRepository;
+
 /**
  *
  * @author prabin
  */
-public class TeamTournamentRepository {
-    
+public class TeamTournamentRepository extends GenericRepository<TeamTournament, Integer> {
+
+    @Override
+    public Integer getId(TeamTournament item) {
+        return item.getId();
+    }
+
 }

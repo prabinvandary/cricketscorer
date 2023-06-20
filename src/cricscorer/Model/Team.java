@@ -1,21 +1,19 @@
 package cricscorer.Model;
 
-public class Team {
+import cricscorer.repository.generic.GenericAbstractClass;
+import cricscorer.repository.generic.GenericInterface;
 
-    private Integer id;
+public class Team extends GenericAbstractClass implements GenericInterface {
+
     private String name;
     private String address;
     private String manager;
 
     public Team(Integer id, String name, String address, String manager) {
-        this.id = id;
+        this.setId(id);
         this.name = name;
         this.address = address;
         this.manager = manager;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     public String getAddress() {
@@ -38,11 +36,12 @@ public class Team {
         this.manager = manager;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String getTableName() {
+        return "team";
     }
 }

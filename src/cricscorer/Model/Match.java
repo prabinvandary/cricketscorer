@@ -1,22 +1,17 @@
 package cricscorer.Model;
 
-import java.time.LocalDate;
-import java.util.Date;
+import cricscorer.repository.generic.GenericAbstractClass;
+import cricscorer.repository.generic.GenericInterface;
 
-public class Match {
+public class Match extends GenericAbstractClass implements GenericInterface{
 
-    private Integer id;
-    private String  matchDate;
+    private String matchDate;
     private String venue;
 
     public Match(Integer id, String matchDate, String venue) {
-        this.id = id;
+        this.setId(id);
         this.matchDate = matchDate;
         this.venue = venue;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     public String getMatchDate() {
@@ -26,19 +21,17 @@ public class Match {
     public String getVenue() {
         return venue;
     }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public void setMatchDate(String matchDate) {
         this.matchDate = matchDate;
     }
 
-
-
     public void setVenue(String venue) {
         this.venue = venue;
+    }
+
+    @Override
+    public String getTableName() {
+        return "match";
     }
 
 }
