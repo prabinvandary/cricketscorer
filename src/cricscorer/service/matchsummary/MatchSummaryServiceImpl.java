@@ -5,6 +5,7 @@
 package cricscorer.service.matchsummary;
 
 import cricscorer.Model.MatchSummary;
+import cricscorer.repository.matchsummary.MatchSummaryRepository;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,21 +14,9 @@ import java.util.List;
  * @author prabin
  */
 public class MatchSummaryServiceImpl implements MatchSummaryService {
-    List<MatchSummary> matchSummaryList=new ArrayList<>();
-
-    public List<MatchSummary> getMatchSummaryList() {
-        return matchSummaryList;
-    }
-
-    public void setMatchSummaryList(List<MatchSummary> matchSummaryList) {
-        this.matchSummaryList = matchSummaryList;
-    }
-    
-    
-
     @Override
-    public Boolean saveMatchSummary(MatchSummary matchSummary) {
-        matchSummaryList.add(matchSummary);
+    public Boolean saveMatchSummary(MatchSummaryRepository matchSummaryRepository, MatchSummary matchSummary) {
+        matchSummaryRepository.saveData(matchSummary);
         return true;
     }
 

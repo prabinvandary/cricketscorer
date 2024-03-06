@@ -5,5 +5,5 @@
 package cricscorer.enumvalues;
 
 public enum PlayerRole {
-    BATSMEN,BOWLER,ALL_ROUNDER;
+    BATSMEN, BOWLER, ALL_ROUNDER;
 }

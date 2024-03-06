@@ -5,12 +5,12 @@ import cricscorer.service.team.TeamService;
 import java.util.Scanner;
 
 public class CreateEntitiesDashboard {
-            private final TeamService teamService;
+
+    private final TeamService teamService;
 
     public CreateEntitiesDashboard(cricscorer.service.team.TeamService teamService) {
         this.teamService = teamService;
     }
-
 
     Scanner sc = new Scanner(System.in);
 

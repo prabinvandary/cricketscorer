@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author prabin
  */
-public class TeamTournamentServiceImpl implements TeamTournamentService{
+public class TeamTournamentServiceImpl implements TeamTournamentService {
 
     @Override
     public Boolean saveTeamTournament(TeamTournament teamTournament) {
@@ -27,5 +27,5 @@ public class TeamTournamentServiceImpl implements TeamTournamentService{
     public TeamTournament getTeamTournamentById(Integer id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

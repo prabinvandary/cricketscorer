@@ -4,10 +4,15 @@
  */
 package cricscorer.repository.teammatchscore;
 
+import cricscorer.Model.TeamMatchScore;
+import cricscorer.repository.generic.genericrepository.GenericRepository;
+import cricscorer.repository.generic.genericrepository.GenericRepositoryInterface;
+import java.util.List;
+
 /**
  *
  * @author prabin
  */
-public class TeamMatchScoreRepository {
-    
+public class TeamMatchScoreRepository extends GenericRepository<TeamMatchScore, Integer> {
+
 }

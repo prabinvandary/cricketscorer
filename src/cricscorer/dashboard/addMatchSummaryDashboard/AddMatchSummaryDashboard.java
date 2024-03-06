@@ -2,12 +2,15 @@ package cricscorer.dashboard.addMatchSummaryDashboard;
 
 import cricscorer.Model.MatchSummary;
 import cricscorer.enumvalues.MatchBowlAction;
+import cricscorer.repository.matchsummary.MatchSummaryRepository;
 import cricscorer.service.matchsummary.MatchSummaryService;
 import java.util.Scanner;
 
 public class AddMatchSummaryDashboard {
+
     Scanner sc = new Scanner(System.in);
     private final MatchSummaryService matchSummaryService;
+    MatchSummaryRepository matchSummaryRepository;
     Integer teamScore = 0;
     Double teamOver = 0.0;
 
@@ -36,8 +39,6 @@ public class AddMatchSummaryDashboard {
     public AddMatchSummaryDashboard() {
         this.matchSummaryService = null;
     }
-    
-
 
     public void addMatchSummaryDashboard(Integer matchId) {
         System.out.println("Let's start the match and enter the each balls details:\n Are you ready??");
@@ -93,7 +94,7 @@ public class AddMatchSummaryDashboard {
                     default:
                         break;
                 }
-                matchSummaryService.saveMatchSummary(new MatchSummary(id,
+                matchSummaryService.saveMatchSummary(matchSummaryRepository, new MatchSummary(id,
                         ballRun, over, matchBowlAction, batsMenId, bowlerId, matchId));
                 teamScore = teamScore + ballRun;
                 id++;

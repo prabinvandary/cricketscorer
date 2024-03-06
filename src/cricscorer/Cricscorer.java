@@ -4,6 +4,7 @@
  */
 package cricscorer;
 
+import cricscorer.controller.dashboard.DashboardController;
 import cricscorer.dashboard.Dashboard;
 
 /**
@@ -16,8 +17,7 @@ public class Cricscorer {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Dashboard  dashboard=new Dashboard();
-        
+        DashboardController dashboard = new DashboardController();
         // TODO code application logic here
         System.out.println(dashboard.returnDashboard());
     }

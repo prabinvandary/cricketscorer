@@ -1,11 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package cricscorer.service.Match;
 
 import cricscorer.Model.Match;
-import java.util.AbstractList;
+import cricscorer.repository.match.MatchRepository;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,21 +11,9 @@ import java.util.List;
  */
 public class MatchServiceImpl implements MatchService {
 
-    List<Match> matchList = new ArrayList<>();
-
-    public List<Match> getMatchList() {
-        return matchList;
-    }
-
-    public void setMatchList(List<Match> matchList) {
-        this.matchList = matchList;
-    }
-
     @Override
-    public Integer saveMatch(Match match) {
-        List<Match> matches = new ArrayList<>();
-        matches.add(match);
-        return 1;
+    public Integer saveMatch(MatchRepository matchRepository, Match match) {
+      return matchRepository.saveData(match).getId();
     }
 
     @Override

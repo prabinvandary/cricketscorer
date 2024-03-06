@@ -5,6 +5,7 @@
 package cricscorer.service.matchsummary;
 
 import cricscorer.Model.MatchSummary;
+import cricscorer.repository.matchsummary.MatchSummaryRepository;
 import java.util.List;
 
 /**
@@ -12,7 +13,10 @@ import java.util.List;
  * @author prabin
  */
 public interface MatchSummaryService {
-    Boolean saveMatchSummary(MatchSummary matchSummary);
+
+    Boolean saveMatchSummary(MatchSummaryRepository matchSummaryRepository, MatchSummary matchSummary);
+
     List<MatchSummary> getAllMatchSummary();
+
     MatchSummary matchSummaryById(Integer id);
 }
